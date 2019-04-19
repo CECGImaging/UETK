@@ -4,7 +4,7 @@
 <networkFile class_id="0" tracking_level="0" version="6">
 	<networkInfo class_id="1" tracking_level="0" version="0">
 		<modules class_id="2" tracking_level="0" version="0">
-			<count>23</count>
+			<count>27</count>
 			<item_version>0</item_version>
 			<item class_id="3" tracking_level="0" version="0">
 				<first>CreateStandardColorMap:0</first>
@@ -142,26 +142,102 @@
 				</second>
 			</item>
 			<item>
-				<first>CreateString:2</first>
+				<first>EvaluateLinearAlgebraUnary:0</first>
 				<second>
 					<module>
 						<package_name_>SCIRun</package_name_>
-						<category_name_>String</category_name_>
-						<module_name_>CreateString</module_name_>
+						<category_name_>Math</category_name_>
+						<module_name_>EvaluateLinearAlgebraUnary</module_name_>
 					</module>
 					<state>
 						<stateMap>
-							<count>1</count>
+							<count>3</count>
 							<item_version>0</item_version>
 							<item>
 								<first>
-									<name>InputString</name>
+									<name>FunctionString</name>
 								</first>
 								<second>
-									<name>InputString</name>
+									<name>FunctionString</name>
 									<value>
 										<which>2</which>
-										<value>/Users/jess/Edgar/database/Unmodified/Torso_Tank/Utah-2002-05-15/SCRIPTDATA.mat</value>
+										<value>x+10</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>Operator</name>
+								</first>
+								<second>
+									<name>Operator</name>
+									<value>
+										<which>0</which>
+										<value>1</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>ScalarValue</name>
+								</first>
+								<second>
+									<name>ScalarValue</name>
+									<value>
+										<which>0</which>
+										<value>0</value>
+									</value>
+								</second>
+							</item>
+						</stateMap>
+					</state>
+				</second>
+			</item>
+			<item>
+				<first>EvaluateLinearAlgebraUnary:1</first>
+				<second>
+					<module>
+						<package_name_>SCIRun</package_name_>
+						<category_name_>Math</category_name_>
+						<module_name_>EvaluateLinearAlgebraUnary</module_name_>
+					</module>
+					<state>
+						<stateMap>
+							<count>3</count>
+							<item_version>0</item_version>
+							<item>
+								<first>
+									<name>FunctionString</name>
+								</first>
+								<second>
+									<name>FunctionString</name>
+									<value>
+										<which>2</which>
+										<value>x+10</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>Operator</name>
+								</first>
+								<second>
+									<name>Operator</name>
+									<value>
+										<which>0</which>
+										<value>1</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>ScalarValue</name>
+								</first>
+								<second>
+									<name>ScalarValue</name>
+									<value>
+										<which>0</which>
+										<value>0</value>
 									</value>
 								</second>
 							</item>
@@ -537,41 +613,35 @@
 									<name>PythonCode</name>
 									<value>
 										<which>2</which>
-										<value># Insert your Python code here. The SCIRun API package is automatically imported.
-
-
-sd_input = stringInput1
+										<value>sd_input = stringInput1
 pd_input = stringInput2
 
+# intialize script and processing data
 eng.eval(&quot;global SCRIPTDATA PROCESSINGDATA&quot;,nargout = 0)
+
+# run PFEIFER
 eng.PFEIFER(&apos;runScriptFile&apos;,sd_input,pd_input, nargout=0)
-#print(&apos;PFEIFER started&apos;)
-#mainFigure=eng.findobj(h,&apos;tag&apos;,&apos;PROCESSINGSCRIPTMENU&apos;)
 mf = eng.eval(&quot;findobj(allchild(0.0),&apos;tag&apos;,&apos;PROCESSINGSCRIPTMENU&apos;)&quot;)
 eng.workspace[&apos;mainFigure&apos;]=mf
+
+# wait until PFEIFER is done
 eng.eval(&apos;uiwait(mainFigure)&apos;,nargout=0)
+
+# Get the resulting files
 SCRIPTDATA = eng.workspace[&apos;SCRIPTDATA&apos;]
-#PROCESSINGDATA = eng.workspace[&apos;PROCESSINGDATA&apos;]
-#print(SCRIPTDATA)
-#print(PROCESSINGDATA)
-
-#eng.uiwait(eng.gcf)
-
+outfiles = SCRIPTDATA[&apos;OUTFILENAME&apos;]
+print(outfiles)
 out_path = SCRIPTDATA[&apos;MATODIR&apos;]
-in_file = SCRIPTDATA[&apos;ACQFILENAME&apos;][int(SCRIPTDATA[&apos;ACQNUM&apos;]-1)]
 
-#g_name = SCRIPTDATA[&apos;GROUPNAME&apos;][0][int(SCRIPTDATA[&apos;GROUPSELECT&apos;]-1)]
-g_name = SCRIPTDATA[&apos;GROUPEXTENSION&apos;][0][int(SCRIPTDATA[&apos;CURRENTRUNGROUP&apos;]-1)]
-tmp_name = os.path.splitext(in_file)
-tmp_name2 = tmp_name[0].split(&apos;-&apos;)
-o_root = &apos;-&apos;.join(tmp_name2[0:len(tmp_name2)-1])+g_name+&apos;-&apos;+tmp_name2[len(tmp_name2)-1]+&apos;.mat&apos;
-out_file=out_path+&apos;/&apos;+o_root
+# just get one file
+file = 0
+out_file=out_path+&apos;/&apos;+outfiles[file]
 
-
-#BSPM = matrixInput1
-#matrixOutput1 = BSPM
+# signal averaging can go here
 
 stringOutput1 = out_file
+
+print(out_file)
 
 
 print(&quot;continue with inverse&quot;)
@@ -703,13 +773,643 @@ print(&quot;continue with inverse&quot;)
 import matlab.engine
 print(&apos;matlab imported&apos;)
 
-if &apos;eng&apos; in vars():
-  print(&apos;matlab already loaded&apos;)
-else:
-  eng = matlab.engine.start_matlab()
-  print(&apos;matlab started&apos;)
+eng =  matlab.engine.start_matlab() if (not &apos;eng&apos; in vars()) else eng
+
+print(eng)
+
+
+#from scipy.signal import butter, filtfilt
+import numpy as np
 
 </value>
+									</value>
+								</second>
+							</item>
+						</stateMap>
+					</state>
+				</second>
+			</item>
+			<item>
+				<first>InterfaceWithPython:1</first>
+				<second>
+					<module>
+						<package_name_>SCIRun</package_name_>
+						<category_name_>Python</category_name_>
+						<module_name_>InterfaceWithPython</module_name_>
+					</module>
+					<state>
+						<stateMap>
+							<count>14</count>
+							<item_version>0</item_version>
+							<item>
+								<first>
+									<name>InputMatrix:0</name>
+								</first>
+								<second>
+									<name>InputMatrix:0</name>
+									<value>
+										<which>2</which>
+										<value>matrixInput1</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>NumberOfRetries</name>
+								</first>
+								<second>
+									<name>NumberOfRetries</name>
+									<value>
+										<which>0</which>
+										<value>50</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PollingIntervalMilliseconds</name>
+								</first>
+								<second>
+									<name>PollingIntervalMilliseconds</name>
+									<value>
+										<which>0</which>
+										<value>200</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonCode</name>
+								</first>
+								<second>
+									<name>PythonCode</name>
+									<value>
+										<which>2</which>
+										<value>
+fs = 1000
+
+cutoff = 100
+order = 6
+
+nyq = 0.5 * fs
+normal_cutoff = cutoff / nyq
+b, a = butter(order, normal_cutoff,  btype=&apos;low&apos;, analog=False)
+
+
+BSPM = matrixInput1
+BSPM_new=[]
+for k in range(len(BSPM)):
+  signal = np.array(BSPM[k])
+  new_signal = filtfilt(b, a, signal)
+  #conditioned_signal = butter_highpass_filter(signal, cutoff, fs, order)
+  BSPM_new.append(new_signal.tolist())
+
+matrixOutput1 = BSPM_new
+</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonOutputField1Name</name>
+								</first>
+								<second>
+									<name>PythonOutputField1Name</name>
+									<value>
+										<which>2</which>
+										<value>fieldOutput1</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonOutputField2Name</name>
+								</first>
+								<second>
+									<name>PythonOutputField2Name</name>
+									<value>
+										<which>2</which>
+										<value>fieldOutput2</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonOutputField3Name</name>
+								</first>
+								<second>
+									<name>PythonOutputField3Name</name>
+									<value>
+										<which>2</which>
+										<value>fieldOutput3</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonOutputMatrix1Name</name>
+								</first>
+								<second>
+									<name>PythonOutputMatrix1Name</name>
+									<value>
+										<which>2</which>
+										<value>matrixOutput1</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonOutputMatrix2Name</name>
+								</first>
+								<second>
+									<name>PythonOutputMatrix2Name</name>
+									<value>
+										<which>2</which>
+										<value>matrixOutput2</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonOutputMatrix3Name</name>
+								</first>
+								<second>
+									<name>PythonOutputMatrix3Name</name>
+									<value>
+										<which>2</which>
+										<value>matrixOutput3</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonOutputString1Name</name>
+								</first>
+								<second>
+									<name>PythonOutputString1Name</name>
+									<value>
+										<which>2</which>
+										<value>stringOutput1</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonOutputString2Name</name>
+								</first>
+								<second>
+									<name>PythonOutputString2Name</name>
+									<value>
+										<which>2</which>
+										<value>stringOutput2</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonOutputString3Name</name>
+								</first>
+								<second>
+									<name>PythonOutputString3Name</name>
+									<value>
+										<which>2</which>
+										<value>stringOutput3</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonTopLevelCode</name>
+								</first>
+								<second>
+									<name>PythonTopLevelCode</name>
+									<value>
+										<which>2</which>
+										<value>
+
+
+
+</value>
+									</value>
+								</second>
+							</item>
+						</stateMap>
+					</state>
+				</second>
+			</item>
+			<item>
+				<first>LinePlotter:0</first>
+				<second>
+					<module>
+						<package_name_>SCIRun</package_name_>
+						<category_name_>Math</category_name_>
+						<module_name_>LinePlotter</module_name_>
+					</module>
+					<state>
+						<stateMap>
+							<count>13</count>
+							<item_version>0</item_version>
+							<item>
+								<first>
+									<name>CurveStyle</name>
+								</first>
+								<second>
+									<name>CurveStyle</name>
+									<value>
+										<which>2</which>
+										<value>Lines</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>DataTitle</name>
+								</first>
+								<second>
+									<name>DataTitle</name>
+									<value>
+										<which>2</which>
+										<value>Data title</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>HorizontalAxisPosition</name>
+								</first>
+								<second>
+									<name>HorizontalAxisPosition</name>
+									<value>
+										<which>1</which>
+										<value>0.00000000000000000e+00</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>HorizontalAxisVisible</name>
+								</first>
+								<second>
+									<name>HorizontalAxisVisible</name>
+									<value>
+										<which>3</which>
+										<value>1</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PlotBackgroundColor</name>
+								</first>
+								<second>
+									<name>PlotBackgroundColor</name>
+									<value>
+										<which>2</which>
+										<value></value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PlotColors</name>
+								</first>
+								<second>
+									<name>PlotColors</name>
+									<value>
+										<which>5</which>
+										<value>
+											<count>5</count>
+											<item_version>0</item_version>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>2</which>
+													<value>Color(0.152941,0.129412,0.235294)</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>2</which>
+													<value>Color(0.352941,0.207843,0.164706)</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>2</which>
+													<value>Color(0.639216,0.231373,0.12549)</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>2</which>
+													<value>Color(0.643137,0.47451,0.388235)</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>2</which>
+													<value>Color(0.65098,0.647059,0.478431)</value>
+												</value>
+											</item>
+										</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PlotTitle</name>
+								</first>
+								<second>
+									<name>PlotTitle</name>
+									<value>
+										<which>2</which>
+										<value>Plot title</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>ShowPointSymbols</name>
+								</first>
+								<second>
+									<name>ShowPointSymbols</name>
+									<value>
+										<which>3</which>
+										<value>0</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>TransposeData</name>
+								</first>
+								<second>
+									<name>TransposeData</name>
+									<value>
+										<which>3</which>
+										<value>0</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>VerticalAxisPosition</name>
+								</first>
+								<second>
+									<name>VerticalAxisPosition</name>
+									<value>
+										<which>1</which>
+										<value>0.00000000000000000e+00</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>VerticalAxisVisible</name>
+								</first>
+								<second>
+									<name>VerticalAxisVisible</name>
+									<value>
+										<which>3</which>
+										<value>1</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>XAxisLabel</name>
+								</first>
+								<second>
+									<name>XAxisLabel</name>
+									<value>
+										<which>2</which>
+										<value>x axis</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>YAxisLabel</name>
+								</first>
+								<second>
+									<name>YAxisLabel</name>
+									<value>
+										<which>2</which>
+										<value>y axis</value>
+									</value>
+								</second>
+							</item>
+						</stateMap>
+					</state>
+				</second>
+			</item>
+			<item>
+				<first>LinePlotter:1</first>
+				<second>
+					<module>
+						<package_name_>SCIRun</package_name_>
+						<category_name_>Math</category_name_>
+						<module_name_>LinePlotter</module_name_>
+					</module>
+					<state>
+						<stateMap>
+							<count>13</count>
+							<item_version>0</item_version>
+							<item>
+								<first>
+									<name>CurveStyle</name>
+								</first>
+								<second>
+									<name>CurveStyle</name>
+									<value>
+										<which>2</which>
+										<value>Lines</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>DataTitle</name>
+								</first>
+								<second>
+									<name>DataTitle</name>
+									<value>
+										<which>2</which>
+										<value>Data title</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>HorizontalAxisPosition</name>
+								</first>
+								<second>
+									<name>HorizontalAxisPosition</name>
+									<value>
+										<which>1</which>
+										<value>0.00000000000000000e+00</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>HorizontalAxisVisible</name>
+								</first>
+								<second>
+									<name>HorizontalAxisVisible</name>
+									<value>
+										<which>3</which>
+										<value>1</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PlotBackgroundColor</name>
+								</first>
+								<second>
+									<name>PlotBackgroundColor</name>
+									<value>
+										<which>2</which>
+										<value></value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PlotColors</name>
+								</first>
+								<second>
+									<name>PlotColors</name>
+									<value>
+										<which>5</which>
+										<value>
+											<count>5</count>
+											<item_version>0</item_version>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>2</which>
+													<value>Color(0.152941,0.129412,0.235294)</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>2</which>
+													<value>Color(0.352941,0.207843,0.164706)</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>2</which>
+													<value>Color(0.639216,0.231373,0.12549)</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>2</which>
+													<value>Color(0.643137,0.47451,0.388235)</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>2</which>
+													<value>Color(0.65098,0.647059,0.478431)</value>
+												</value>
+											</item>
+										</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PlotTitle</name>
+								</first>
+								<second>
+									<name>PlotTitle</name>
+									<value>
+										<which>2</which>
+										<value>Plot title</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>ShowPointSymbols</name>
+								</first>
+								<second>
+									<name>ShowPointSymbols</name>
+									<value>
+										<which>3</which>
+										<value>0</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>TransposeData</name>
+								</first>
+								<second>
+									<name>TransposeData</name>
+									<value>
+										<which>3</which>
+										<value>0</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>VerticalAxisPosition</name>
+								</first>
+								<second>
+									<name>VerticalAxisPosition</name>
+									<value>
+										<which>1</which>
+										<value>0.00000000000000000e+00</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>VerticalAxisVisible</name>
+								</first>
+								<second>
+									<name>VerticalAxisVisible</name>
+									<value>
+										<which>3</which>
+										<value>1</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>XAxisLabel</name>
+								</first>
+								<second>
+									<name>XAxisLabel</name>
+									<value>
+										<which>2</which>
+										<value>x axis</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>YAxisLabel</name>
+								</first>
+								<second>
+									<name>YAxisLabel</name>
+									<value>
+										<which>2</which>
+										<value>y axis</value>
 									</value>
 								</second>
 							</item>
@@ -1009,7 +1709,7 @@ else:
 									<name>FixedMax</name>
 									<value>
 										<which>1</which>
-										<value>1.13611045071593164e+00</value>
+										<value>1.13037098761094557e+00</value>
 									</value>
 								</second>
 							</item>
@@ -1021,7 +1721,7 @@ else:
 									<name>FixedMin</name>
 									<value>
 										<which>1</which>
-										<value>-9.74066513856043148e-01</value>
+										<value>-9.60622811211698235e-01</value>
 									</value>
 								</second>
 							</item>
@@ -3049,7 +3749,7 @@ else:
 									<name>ScaleBarHeight</name>
 									<value>
 										<which>1</which>
-										<value>9.99899999999999949e+01</value>
+										<value>0.00000000000000000e+00</value>
 									</value>
 								</second>
 							</item>
@@ -3061,7 +3761,7 @@ else:
 									<name>ScaleBarLength</name>
 									<value>
 										<which>1</which>
-										<value>9.99899999999999949e+01</value>
+										<value>0.00000000000000000e+00</value>
 									</value>
 								</second>
 							</item>
@@ -3239,7 +3939,7 @@ else:
 			</item>
 		</modules>
 		<connections class_id="13" tracking_level="0" version="0">
-			<count>29</count>
+			<count>34</count>
 			<item_version>0</item_version>
 			<item class_id="14" tracking_level="0" version="0">
 				<moduleId1_>CreateStandardColorMap:0</moduleId1_>
@@ -3287,6 +3987,30 @@ else:
 				<port2_>
 					<name>InputString</name>
 					<id>3</id>
+				</port2_>
+			</item>
+			<item>
+				<moduleId1_>EvaluateLinearAlgebraUnary:0</moduleId1_>
+				<port1_>
+					<name>Result</name>
+					<id>0</id>
+				</port1_>
+				<moduleId2_>LinePlotter:0</moduleId2_>
+				<port2_>
+					<name>DependentVariables</name>
+					<id>0</id>
+				</port2_>
+			</item>
+			<item>
+				<moduleId1_>EvaluateLinearAlgebraUnary:1</moduleId1_>
+				<port1_>
+					<name>Result</name>
+					<id>0</id>
+				</port1_>
+				<moduleId2_>LinePlotter:1</moduleId2_>
+				<port2_>
+					<name>DependentVariables</name>
+					<id>0</id>
 				</port2_>
 			</item>
 			<item>
@@ -3362,6 +4086,42 @@ else:
 				</port2_>
 			</item>
 			<item>
+				<moduleId1_>InterfaceWithPython:1</moduleId1_>
+				<port1_>
+					<name>PythonMatrix1</name>
+					<id>0</id>
+				</port1_>
+				<moduleId2_>EvaluateLinearAlgebraUnary:0</moduleId2_>
+				<port2_>
+					<name>InputMatrix</name>
+					<id>0</id>
+				</port2_>
+			</item>
+			<item>
+				<moduleId1_>InterfaceWithPython:1</moduleId1_>
+				<port1_>
+					<name>PythonMatrix1</name>
+					<id>0</id>
+				</port1_>
+				<moduleId2_>GetMatrixSlice:0</moduleId2_>
+				<port2_>
+					<name>InputMatrix</name>
+					<id>0</id>
+				</port2_>
+			</item>
+			<item>
+				<moduleId1_>InterfaceWithPython:1</moduleId1_>
+				<port1_>
+					<name>PythonMatrix1</name>
+					<id>0</id>
+				</port1_>
+				<moduleId2_>SolveInverseProblemWithTikhonov:0</moduleId2_>
+				<port2_>
+					<name>MeasuredPotentials</name>
+					<id>0</id>
+				</port2_>
+			</item>
+			<item>
 				<moduleId1_>ReadField:0</moduleId1_>
 				<port1_>
 					<name>Field</name>
@@ -3403,7 +4163,7 @@ else:
 					<name>Matrix</name>
 					<id>0</id>
 				</port1_>
-				<moduleId2_>GetMatrixSlice:0</moduleId2_>
+				<moduleId2_>EvaluateLinearAlgebraUnary:1</moduleId2_>
 				<port2_>
 					<name>InputMatrix</name>
 					<id>0</id>
@@ -3415,9 +4175,9 @@ else:
 					<name>Matrix</name>
 					<id>0</id>
 				</port1_>
-				<moduleId2_>SolveInverseProblemWithTikhonov:0</moduleId2_>
+				<moduleId2_>InterfaceWithPython:1</moduleId2_>
 				<port2_>
-					<name>MeasuredPotentials</name>
+					<name>InputMatrix</name>
 					<id>0</id>
 				</port2_>
 			</item>
@@ -3592,62 +4352,90 @@ else:
 		</connections>
 	</networkInfo>
 	<modulePositions class_id="16" tracking_level="0" version="0">
-		<count>23</count>
+		<count>27</count>
 		<item_version>0</item_version>
 		<item class_id="17" tracking_level="0" version="0">
 			<first>CreateStandardColorMap:0</first>
 			<second class_id="18" tracking_level="0" version="0">
-				<first>-3.94000000000000000e+02</first>
-				<second>3.90000000000000000e+01</second>
+				<first>-3.89186874999999930e+02</first>
+				<second>2.39669999999999959e+02</second>
 			</second>
 		</item>
 		<item>
 			<first>CreateString:0</first>
 			<second>
-				<first>-4.32099999999999909e+02</first>
-				<second>-5.11599999999999909e+02</second>
+				<first>-5.87229249999999979e+02</first>
+				<second>-5.35933999999999742e+02</second>
 			</second>
 		</item>
 		<item>
 			<first>CreateString:1</first>
 			<second>
-				<first>-2.73499999999999886e+02</first>
-				<second>-5.27549999999999955e+02</second>
+				<first>-4.17983124999999859e+02</first>
+				<second>-5.36675250000000005e+02</second>
 			</second>
 		</item>
 		<item>
-			<first>CreateString:2</first>
+			<first>EvaluateLinearAlgebraUnary:0</first>
 			<second>
-				<first>4.69900000000000091e+02</first>
-				<second>-5.33599999999999909e+02</second>
+				<first>-7.15186874999999873e+02</first>
+				<second>3.19669999999999959e+02</second>
+			</second>
+		</item>
+		<item>
+			<first>EvaluateLinearAlgebraUnary:1</first>
+			<second>
+				<first>-7.67186874999999873e+02</first>
+				<second>2.18669999999999959e+02</second>
 			</second>
 		</item>
 		<item>
 			<first>GetMatrixSlice:0</first>
 			<second>
-				<first>-6.03000000000000000e+02</first>
-				<second>-1.62000000000000000e+02</second>
+				<first>-4.39186874999999930e+02</first>
+				<second>9.36699999999999733e+01</second>
 			</second>
 		</item>
 		<item>
 			<first>GetMatrixSlice:1</first>
 			<second>
-				<first>-1.05000000000000000e+02</first>
-				<second>-9.00000000000000000e+00</second>
+				<first>-8.91868749999999864e+01</first>
+				<second>1.88669999999999959e+02</second>
 			</second>
 		</item>
 		<item>
 			<first>GetMatrixSlice:2</first>
 			<second>
-				<first>2.32000000000000000e+02</first>
-				<second>-5.70000000000000000e+01</second>
+				<first>8.68131250000000136e+01</first>
+				<second>2.01669999999999959e+02</second>
 			</second>
 		</item>
 		<item>
 			<first>InterfaceWithPython:0</first>
 			<second>
-				<first>-4.39849999999999966e+02</first>
-				<second>-3.98600000000000136e+02</second>
+				<first>-5.20849999999999909e+02</first>
+				<second>-4.03600000000000136e+02</second>
+			</second>
+		</item>
+		<item>
+			<first>InterfaceWithPython:1</first>
+			<second>
+				<first>-4.88000000000000000e+02</first>
+				<second>-2.07000000000000000e+02</second>
+			</second>
+		</item>
+		<item>
+			<first>LinePlotter:0</first>
+			<second>
+				<first>-5.76186874999999873e+02</first>
+				<second>6.11669999999999959e+02</second>
+			</second>
+		</item>
+		<item>
+			<first>LinePlotter:1</first>
+			<second>
+				<first>-7.59186874999999873e+02</first>
+				<second>5.98669999999999959e+02</second>
 			</second>
 		</item>
 		<item>
@@ -3660,108 +4448,149 @@ else:
 		<item>
 			<first>ReadField:1</first>
 			<second>
-				<first>-5.94000000000000000e+02</first>
-				<second>-5.10000000000000000e+02</second>
+				<first>-1.39258375000000115e+02</first>
+				<second>-5.14562625000000025e+02</second>
 			</second>
 		</item>
 		<item>
 			<first>ReadMatrix:0</first>
 			<second>
-				<first>-4.10700000000000045e+02</first>
-				<second>-2.71750000000000057e+02</second>
+				<first>-4.43700000000000045e+02</first>
+				<second>-2.97750000000000000e+02</second>
 			</second>
 		</item>
 		<item>
 			<first>ReadMatrix:1</first>
 			<second>
-				<first>-2.04000000000000000e+02</first>
-				<second>-3.68000000000000000e+02</second>
+				<first>4.23817499999999399e+01</first>
+				<second>-3.64958249999999964e+02</second>
 			</second>
 		</item>
 		<item>
 			<first>ReadMatrix:2</first>
 			<second>
-				<first>-4.50000000000000000e+01</first>
-				<second>-4.48000000000000000e+02</second>
+				<first>1.12723749999999825e+01</first>
+				<second>-4.86021874999999966e+02</second>
 			</second>
 		</item>
 		<item>
 			<first>RescaleColorMap:0</first>
 			<second>
-				<first>-5.15000000000000000e+02</first>
-				<second>1.54000000000000000e+02</second>
+				<first>-4.80186874999999930e+02</first>
+				<second>3.53669999999999959e+02</second>
 			</second>
 		</item>
 		<item>
 			<first>RescaleColorMap:1</first>
 			<second>
-				<first>9.90000000000000000e+01</first>
-				<second>2.13000000000000000e+02</second>
+				<first>9.81312500000001364e+00</first>
+				<second>3.84669999999999959e+02</second>
 			</second>
 		</item>
 		<item>
 			<first>SetFieldData:0</first>
 			<second>
-				<first>-6.30000000000000000e+02</first>
-				<second>3.40000000000000000e+01</second>
+				<first>-5.39186874999999873e+02</first>
+				<second>2.52669999999999959e+02</second>
 			</second>
 		</item>
 		<item>
 			<first>SetFieldData:1</first>
 			<second>
-				<first>5.50000000000000000e+01</first>
-				<second>1.36000000000000000e+02</second>
+				<first>-9.61868749999999864e+01</first>
+				<second>2.83669999999999959e+02</second>
 			</second>
 		</item>
 		<item>
 			<first>SetFieldData:2</first>
 			<second>
-				<first>1.97000000000000000e+02</first>
-				<second>1.20000000000000000e+02</second>
+				<first>6.98131250000000136e+01</first>
+				<second>2.92669999999999959e+02</second>
 			</second>
 		</item>
 		<item>
 			<first>ShowField:0</first>
 			<second>
-				<first>-5.45000000000000000e+02</first>
-				<second>2.60000000000000000e+02</second>
+				<first>-3.26186874999999930e+02</first>
+				<second>5.10669999999999959e+02</second>
 			</second>
 		</item>
 		<item>
 			<first>ShowField:1</first>
 			<second>
-				<first>-7.50000000000000000e+01</first>
-				<second>3.21000000000000000e+02</second>
+				<first>-1.14186874999999986e+02</first>
+				<second>4.94669999999999959e+02</second>
 			</second>
 		</item>
 		<item>
 			<first>ShowField:2</first>
 			<second>
-				<first>2.49000000000000000e+02</first>
-				<second>3.17000000000000000e+02</second>
+				<first>3.78131250000000136e+01</first>
+				<second>5.05669999999999959e+02</second>
 			</second>
 		</item>
 		<item>
 			<first>SolveInverseProblemWithTikhonov:0</first>
 			<second>
-				<first>-2.03000000000000000e+02</first>
-				<second>-1.25000000000000000e+02</second>
+				<first>-1.96000000000000000e+02</first>
+				<second>-1.19000000000000000e+02</second>
 			</second>
 		</item>
 		<item>
 			<first>ViewScene:0</first>
 			<second>
-				<first>-3.22000000000000000e+02</first>
-				<second>5.21000000000000000e+02</second>
+				<first>-2.99186874999999930e+02</first>
+				<second>6.42669999999999959e+02</second>
 			</second>
 		</item>
 	</modulePositions>
 	<moduleNotes class_id="19" tracking_level="0" version="0">
-		<count>6</count>
+		<count>13</count>
 		<item_version>0</item_version>
 		<item class_id="20" tracking_level="0" version="0">
-			<first>InterfaceWithPython:0</first>
+			<first>CreateString:0</first>
 			<second class_id="21" tracking_level="0" version="0">
+				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;.SF NS Text&apos;; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;SCRIPTDATA file&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</noteHTML>
+				<noteText>SCRIPTDATA file</noteText>
+				<position>3</position>
+				<fontSize>13</fontSize>
+			</second>
+		</item>
+		<item>
+			<first>CreateString:1</first>
+			<second>
+				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;.SF NS Text&apos;; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;PROCESSINGDATA file&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</noteHTML>
+				<noteText>PROCESSINGDATA file</noteText>
+				<position>3</position>
+				<fontSize>13</fontSize>
+			</second>
+		</item>
+		<item>
+			<first>GetMatrixSlice:0</first>
+			<second>
+				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;.SF NS Text&apos;; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;choose &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;time point&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</noteHTML>
+				<noteText>choose 
+time point</noteText>
+				<position>5</position>
+				<fontSize>13</fontSize>
+			</second>
+		</item>
+		<item>
+			<first>InterfaceWithPython:0</first>
+			<second>
 				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -3769,6 +4598,45 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Run PFEIFER&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</noteHTML>
 				<noteText>Run PFEIFER</noteText>
 				<position>3</position>
+				<fontSize>13</fontSize>
+			</second>
+		</item>
+		<item>
+			<first>InterfaceWithPython:1</first>
+			<second>
+				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;.SF NS Text&apos;; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Additional filtering&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</noteHTML>
+				<noteText>Additional filtering</noteText>
+				<position>3</position>
+				<fontSize>13</fontSize>
+			</second>
+		</item>
+		<item>
+			<first>LinePlotter:0</first>
+			<second>
+				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;.SF NS Text&apos;; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Processed Signal&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</noteHTML>
+				<noteText>Processed Signal</noteText>
+				<position>6</position>
+				<fontSize>13</fontSize>
+			</second>
+		</item>
+		<item>
+			<first>LinePlotter:1</first>
+			<second>
+				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;.SF NS Text&apos;; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Signal from PFEIFER&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</noteHTML>
+				<noteText>Signal from PFEIFER</noteText>
+				<position>6</position>
 				<fontSize>13</fontSize>
 			</second>
 		</item>
@@ -3839,49 +4707,78 @@ p, li { white-space: pre-wrap; }
 				<fontSize>13</fontSize>
 			</second>
 		</item>
+		<item>
+			<first>ViewScene:0</first>
+			<second>
+				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;.SF NS Text&apos;; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;view signals&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</noteHTML>
+				<noteText>view signals</noteText>
+				<position>6</position>
+				<fontSize>13</fontSize>
+			</second>
+		</item>
 	</moduleNotes>
 	<connectionNotes>
 		<count>0</count>
 		<item_version>0</item_version>
 	</connectionNotes>
 	<moduleTags class_id="22" tracking_level="0" version="0">
-		<count>23</count>
+		<count>27</count>
 		<item_version>0</item_version>
 		<item class_id="23" tracking_level="0" version="0">
 			<first>CreateStandardColorMap:0</first>
-			<second>-1</second>
+			<second>0</second>
 		</item>
 		<item>
 			<first>CreateString:0</first>
-			<second>-1</second>
+			<second>2</second>
 		</item>
 		<item>
 			<first>CreateString:1</first>
-			<second>-1</second>
+			<second>2</second>
 		</item>
 		<item>
-			<first>CreateString:2</first>
-			<second>-1</second>
+			<first>EvaluateLinearAlgebraUnary:0</first>
+			<second>0</second>
+		</item>
+		<item>
+			<first>EvaluateLinearAlgebraUnary:1</first>
+			<second>0</second>
 		</item>
 		<item>
 			<first>GetMatrixSlice:0</first>
-			<second>-1</second>
+			<second>0</second>
 		</item>
 		<item>
 			<first>GetMatrixSlice:1</first>
-			<second>-1</second>
+			<second>0</second>
 		</item>
 		<item>
 			<first>GetMatrixSlice:2</first>
-			<second>-1</second>
+			<second>0</second>
 		</item>
 		<item>
 			<first>InterfaceWithPython:0</first>
-			<second>-1</second>
+			<second>3</second>
+		</item>
+		<item>
+			<first>InterfaceWithPython:1</first>
+			<second>3</second>
+		</item>
+		<item>
+			<first>LinePlotter:0</first>
+			<second>0</second>
+		</item>
+		<item>
+			<first>LinePlotter:1</first>
+			<second>0</second>
 		</item>
 		<item>
 			<first>ReadField:0</first>
-			<second>-1</second>
+			<second>1</second>
 		</item>
 		<item>
 			<first>ReadField:1</first>
@@ -3889,7 +4786,7 @@ p, li { white-space: pre-wrap; }
 		</item>
 		<item>
 			<first>ReadMatrix:0</first>
-			<second>-1</second>
+			<second>3</second>
 		</item>
 		<item>
 			<first>ReadMatrix:1</first>
@@ -3901,43 +4798,43 @@ p, li { white-space: pre-wrap; }
 		</item>
 		<item>
 			<first>RescaleColorMap:0</first>
-			<second>-1</second>
+			<second>0</second>
 		</item>
 		<item>
 			<first>RescaleColorMap:1</first>
-			<second>-1</second>
+			<second>0</second>
 		</item>
 		<item>
 			<first>SetFieldData:0</first>
-			<second>-1</second>
+			<second>0</second>
 		</item>
 		<item>
 			<first>SetFieldData:1</first>
-			<second>-1</second>
+			<second>0</second>
 		</item>
 		<item>
 			<first>SetFieldData:2</first>
-			<second>-1</second>
+			<second>0</second>
 		</item>
 		<item>
 			<first>ShowField:0</first>
-			<second>-1</second>
+			<second>0</second>
 		</item>
 		<item>
 			<first>ShowField:1</first>
-			<second>-1</second>
+			<second>0</second>
 		</item>
 		<item>
 			<first>ShowField:2</first>
-			<second>-1</second>
+			<second>0</second>
 		</item>
 		<item>
 			<first>SolveInverseProblemWithTikhonov:0</first>
-			<second>-1</second>
+			<second>9</second>
 		</item>
 		<item>
 			<first>ViewScene:0</first>
-			<second>-1</second>
+			<second>0</second>
 		</item>
 	</moduleTags>
 	<disabledModules class_id="24" tracking_level="0" version="0">
@@ -3949,11 +4846,31 @@ p, li { white-space: pre-wrap; }
 		<item_version>0</item_version>
 	</disabledConnections>
 	<moduleTagLabels class_id="25" tracking_level="0" version="0">
-		<count>0</count>
+		<count>5</count>
 		<item_version>0</item_version>
+		<item class_id="26" tracking_level="0" version="0">
+			<first>0</first>
+			<second>Vizualization</second>
+		</item>
+		<item>
+			<first>1</first>
+			<second>Geom Loading</second>
+		</item>
+		<item>
+			<first>2</first>
+			<second>PFIEFER FIles</second>
+		</item>
+		<item>
+			<first>3</first>
+			<second>preprocessing</second>
+		</item>
+		<item>
+			<first>9</first>
+			<second>ECGI method</second>
+		</item>
 	</moduleTagLabels>
-	<loadTagGroups>0</loadTagGroups>
-	<subnetworks class_id="26" tracking_level="0" version="0">
+	<loadTagGroups>1</loadTagGroups>
+	<subnetworks class_id="27" tracking_level="0" version="0">
 		<count>0</count>
 		<item_version>0</item_version>
 	</subnetworks>
