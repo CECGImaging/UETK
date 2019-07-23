@@ -1780,285 +1780,16 @@ eng =  matlab.engine.start_matlab() if (not &apos;eng&apos; in vars()) else eng
 print(eng)
 
 &quot;&quot;&quot;
-from scipy.signal import butter, filtfilt
-import scipy.io
-from pythonscript_new import *
+#from scipy.signal import butter, filtfilt
+#import scipy.io
+#from pythonscript_new import *
 &quot;&quot;&quot;
 
-#print(&apos;loaded scipy.io&apos;)
+print(&apos;loaded scipy.io&apos;)
 import numpy as np
 
+print(&apos;loaded numpy&apos;)
 </value>
-									</value>
-								</second>
-							</item>
-						</stateMap>
-					</state>
-				</second>
-			</item>
-			<item>
-				<first>InterfaceWithPython:4</first>
-				<second>
-					<module>
-						<package_name_>SCIRun</package_name_>
-						<category_name_>Python</category_name_>
-						<module_name_>InterfaceWithPython</module_name_>
-					</module>
-					<state>
-						<stateMap>
-							<count>19</count>
-							<item_version>0</item_version>
-							<item>
-								<first>
-									<name>InputMatrix:0</name>
-								</first>
-								<second>
-									<name>InputMatrix:0</name>
-									<value>
-										<which>2</which>
-										<value>matrixInput1</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>InputMatrix:1</name>
-								</first>
-								<second>
-									<name>InputMatrix:1</name>
-									<value>
-										<which>2</which>
-										<value>matrixInput2</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>InputMatrix:2</name>
-								</first>
-								<second>
-									<name>InputMatrix:2</name>
-									<value>
-										<which>2</which>
-										<value>matrixInput1</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>InputMatrix:3</name>
-								</first>
-								<second>
-									<name>InputMatrix:3</name>
-									<value>
-										<which>2</which>
-										<value>matrixInput2</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>InputMatrix:4</name>
-								</first>
-								<second>
-									<name>InputMatrix:4</name>
-									<value>
-										<which>2</which>
-										<value>matrixInput2</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>InputString:0</name>
-								</first>
-								<second>
-									<name>InputString:0</name>
-									<value>
-										<which>2</which>
-										<value>stringInput1</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>NumberOfRetries</name>
-								</first>
-								<second>
-									<name>NumberOfRetries</name>
-									<value>
-										<which>0</which>
-										<value>50</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>PollingIntervalMilliseconds</name>
-								</first>
-								<second>
-									<name>PollingIntervalMilliseconds</name>
-									<value>
-										<which>0</which>
-										<value>200</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>PythonCode</name>
-								</first>
-								<second>
-									<name>PythonCode</name>
-									<value>
-										<which>2</which>
-										<value># this does a simple lowpass filter
-
-print(&apos;Low Pass filtering&apos;)
-
-fs = matrixInput2
-
-fs = fs[0][0]
-
-cutoff = 100
-order = 6
-
-nyq = 0.5 * fs
-normal_cutoff = cutoff / nyq
-b, a = butter(order, normal_cutoff,  btype=&apos;low&apos;, analog=False)
-
-
-BSPM = matrixInput1
-BSPM_new=[]
-for k in range(len(BSPM)):
-  signal = np.array(BSPM[k])
-  new_signal = filtfilt(b, a, signal)
-  #conditioned_signal = butter_highpass_filter(signal, cutoff, fs, order)
-  BSPM_new.append(new_signal.tolist())
-
-matrixOutput1 = BSPM_new
-</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>PythonOutputField1Name</name>
-								</first>
-								<second>
-									<name>PythonOutputField1Name</name>
-									<value>
-										<which>2</which>
-										<value>fieldOutput1</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>PythonOutputField2Name</name>
-								</first>
-								<second>
-									<name>PythonOutputField2Name</name>
-									<value>
-										<which>2</which>
-										<value>fieldOutput2</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>PythonOutputField3Name</name>
-								</first>
-								<second>
-									<name>PythonOutputField3Name</name>
-									<value>
-										<which>2</which>
-										<value>fieldOutput3</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>PythonOutputMatrix1Name</name>
-								</first>
-								<second>
-									<name>PythonOutputMatrix1Name</name>
-									<value>
-										<which>2</which>
-										<value>matrixOutput1</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>PythonOutputMatrix2Name</name>
-								</first>
-								<second>
-									<name>PythonOutputMatrix2Name</name>
-									<value>
-										<which>2</which>
-										<value>matrixOutput2</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>PythonOutputMatrix3Name</name>
-								</first>
-								<second>
-									<name>PythonOutputMatrix3Name</name>
-									<value>
-										<which>2</which>
-										<value>matrixOutput3</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>PythonOutputString1Name</name>
-								</first>
-								<second>
-									<name>PythonOutputString1Name</name>
-									<value>
-										<which>2</which>
-										<value>stringOutput1</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>PythonOutputString2Name</name>
-								</first>
-								<second>
-									<name>PythonOutputString2Name</name>
-									<value>
-										<which>2</which>
-										<value>stringOutput2</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>PythonOutputString3Name</name>
-								</first>
-								<second>
-									<name>PythonOutputString3Name</name>
-									<value>
-										<which>2</which>
-										<value>stringOutput3</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>PythonTopLevelCode</name>
-								</first>
-								<second>
-									<name>PythonTopLevelCode</name>
-									<value>
-										<which>2</which>
-										<value># Main namespace/top level context code goes here; for example, import statements and global variables.
-# This code will be executed before the &apos;Code&apos; tab, and no input/output variables are available.</value>
 									</value>
 								</second>
 							</item>
@@ -2407,6 +2138,232 @@ else:
 
 
 matrixOutput1 = mean_bspm</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonOutputField1Name</name>
+								</first>
+								<second>
+									<name>PythonOutputField1Name</name>
+									<value>
+										<which>2</which>
+										<value>fieldOutput1</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonOutputField2Name</name>
+								</first>
+								<second>
+									<name>PythonOutputField2Name</name>
+									<value>
+										<which>2</which>
+										<value>fieldOutput2</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonOutputField3Name</name>
+								</first>
+								<second>
+									<name>PythonOutputField3Name</name>
+									<value>
+										<which>2</which>
+										<value>fieldOutput3</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonOutputMatrix1Name</name>
+								</first>
+								<second>
+									<name>PythonOutputMatrix1Name</name>
+									<value>
+										<which>2</which>
+										<value>matrixOutput1</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonOutputMatrix2Name</name>
+								</first>
+								<second>
+									<name>PythonOutputMatrix2Name</name>
+									<value>
+										<which>2</which>
+										<value>matrixOutput2</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonOutputMatrix3Name</name>
+								</first>
+								<second>
+									<name>PythonOutputMatrix3Name</name>
+									<value>
+										<which>2</which>
+										<value>matrixOutput3</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonOutputString1Name</name>
+								</first>
+								<second>
+									<name>PythonOutputString1Name</name>
+									<value>
+										<which>2</which>
+										<value>stringOutput1</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonOutputString2Name</name>
+								</first>
+								<second>
+									<name>PythonOutputString2Name</name>
+									<value>
+										<which>2</which>
+										<value>stringOutput2</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonOutputString3Name</name>
+								</first>
+								<second>
+									<name>PythonOutputString3Name</name>
+									<value>
+										<which>2</which>
+										<value>stringOutput3</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonTopLevelCode</name>
+								</first>
+								<second>
+									<name>PythonTopLevelCode</name>
+									<value>
+										<which>2</which>
+										<value># Main namespace/top level context code goes here; for example, import statements and global variables.
+# This code will be executed before the &apos;Code&apos; tab, and no input/output variables are available.</value>
+									</value>
+								</second>
+							</item>
+						</stateMap>
+					</state>
+				</second>
+			</item>
+			<item>
+				<first>InterfaceWithPython:7</first>
+				<second>
+					<module>
+						<package_name_>SCIRun</package_name_>
+						<category_name_>Python</category_name_>
+						<module_name_>InterfaceWithPython</module_name_>
+					</module>
+					<state>
+						<stateMap>
+							<count>15</count>
+							<item_version>0</item_version>
+							<item>
+								<first>
+									<name>InputMatrix:0</name>
+								</first>
+								<second>
+									<name>InputMatrix:0</name>
+									<value>
+										<which>2</which>
+										<value>matrixInput1</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>InputMatrix:1</name>
+								</first>
+								<second>
+									<name>InputMatrix:1</name>
+									<value>
+										<which>2</which>
+										<value>matrixInput2</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>NumberOfRetries</name>
+								</first>
+								<second>
+									<name>NumberOfRetries</name>
+									<value>
+										<which>0</which>
+										<value>50</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PollingIntervalMilliseconds</name>
+								</first>
+								<second>
+									<name>PollingIntervalMilliseconds</name>
+									<value>
+										<which>0</which>
+										<value>200</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PythonCode</name>
+								</first>
+								<second>
+									<name>PythonCode</name>
+									<value>
+										<which>2</which>
+										<value># this does a simple lowpass filter
+
+print(&apos;Low Pass filtering&apos;)
+
+fs = matrixInput2
+
+fs = fs[0][0]
+
+cutoff = 100
+order = 6
+
+nyq = 0.5 * fs
+normal_cutoff = cutoff / nyq
+b, a = butter(order, normal_cutoff,  btype=&apos;low&apos;, analog=False)
+
+
+BSPM = matrixInput1
+BSPM_new=[]
+print(len(BSPM))
+
+for k in range(len(BSPM)):
+  signal = np.array(BSPM[k])
+  new_signal = filtfilt(b, a, signal)
+  #conditioned_signal = butter_highpass_filter(signal, cutoff, fs, order)
+  BSPM_new.append(new_signal.tolist())
+
+print(len(BSPM_new))
+
+matrixOutput1 = BSPM_new
+</value>
 									</value>
 								</second>
 							</item>
@@ -6215,7 +6172,7 @@ matrixOutput1 = mean_bspm</value>
 									<name>FacesColoring</name>
 									<value>
 										<which>0</which>
-										<value>1</value>
+										<value>0</value>
 									</value>
 								</second>
 							</item>
@@ -6805,7 +6762,7 @@ matrixOutput1 = mean_bspm</value>
 					</module>
 					<state>
 						<stateMap>
-							<count>39</count>
+							<count>47</count>
 							<item_version>0</item_version>
 							<item>
 								<first>
@@ -6941,6 +6898,18 @@ matrixOutput1 = mean_bspm</value>
 							</item>
 							<item>
 								<first>
+									<name>HeadLightAzimuth</name>
+								</first>
+								<second>
+									<name>HeadLightAzimuth</name>
+									<value>
+										<which>0</which>
+										<value>180</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
 									<name>HeadLightColor</name>
 								</first>
 								<second>
@@ -6948,6 +6917,18 @@ matrixOutput1 = mean_bspm</value>
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>HeadLightInclination</name>
+								</first>
+								<second>
+									<name>HeadLightInclination</name>
+									<value>
+										<which>0</which>
+										<value>90</value>
 									</value>
 								</second>
 							</item>
@@ -6965,6 +6946,18 @@ matrixOutput1 = mean_bspm</value>
 							</item>
 							<item>
 								<first>
+									<name>Light1Azimuth</name>
+								</first>
+								<second>
+									<name>Light1Azimuth</name>
+									<value>
+										<which>0</which>
+										<value>180</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
 									<name>Light1Color</name>
 								</first>
 								<second>
@@ -6972,6 +6965,18 @@ matrixOutput1 = mean_bspm</value>
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>Light1Inclination</name>
+								</first>
+								<second>
+									<name>Light1Inclination</name>
+									<value>
+										<which>0</which>
+										<value>90</value>
 									</value>
 								</second>
 							</item>
@@ -6989,6 +6994,18 @@ matrixOutput1 = mean_bspm</value>
 							</item>
 							<item>
 								<first>
+									<name>Light2Azimuth</name>
+								</first>
+								<second>
+									<name>Light2Azimuth</name>
+									<value>
+										<which>0</which>
+										<value>180</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
 									<name>Light2Color</name>
 								</first>
 								<second>
@@ -6996,6 +7013,18 @@ matrixOutput1 = mean_bspm</value>
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>Light2Inclination</name>
+								</first>
+								<second>
+									<name>Light2Inclination</name>
+									<value>
+										<which>0</which>
+										<value>90</value>
 									</value>
 								</second>
 							</item>
@@ -7013,6 +7042,18 @@ matrixOutput1 = mean_bspm</value>
 							</item>
 							<item>
 								<first>
+									<name>Light3Azimuth</name>
+								</first>
+								<second>
+									<name>Light3Azimuth</name>
+									<value>
+										<which>0</which>
+										<value>180</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
 									<name>Light3Color</name>
 								</first>
 								<second>
@@ -7020,6 +7061,18 @@ matrixOutput1 = mean_bspm</value>
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>Light3Inclination</name>
+								</first>
+								<second>
+									<name>Light3Inclination</name>
+									<value>
+										<which>0</which>
+										<value>90</value>
 									</value>
 								</second>
 							</item>
@@ -7685,10 +7738,10 @@ matrixOutput1 = mean_bspm</value>
 					<name>PythonMatrix1</name>
 					<id>0</id>
 				</port1_>
-				<moduleId2_>InterfaceWithPython:4</moduleId2_>
+				<moduleId2_>InterfaceWithPython:7</moduleId2_>
 				<port2_>
 					<name>InputMatrix</name>
-					<id>4</id>
+					<id>1</id>
 				</port2_>
 			</item>
 			<item>
@@ -7728,42 +7781,6 @@ matrixOutput1 = mean_bspm</value>
 				</port2_>
 			</item>
 			<item>
-				<moduleId1_>InterfaceWithPython:4</moduleId1_>
-				<port1_>
-					<name>PythonMatrix1</name>
-					<id>0</id>
-				</port1_>
-				<moduleId2_>EvaluateLinearAlgebraBinary:2</moduleId2_>
-				<port2_>
-					<name>RHS</name>
-					<id>0</id>
-				</port2_>
-			</item>
-			<item>
-				<moduleId1_>InterfaceWithPython:4</moduleId1_>
-				<port1_>
-					<name>PythonMatrix1</name>
-					<id>0</id>
-				</port1_>
-				<moduleId2_>EvaluateLinearAlgebraUnary:2</moduleId2_>
-				<port2_>
-					<name>InputMatrix</name>
-					<id>0</id>
-				</port2_>
-			</item>
-			<item>
-				<moduleId1_>InterfaceWithPython:4</moduleId1_>
-				<port1_>
-					<name>PythonMatrix1</name>
-					<id>0</id>
-				</port1_>
-				<moduleId2_>InterfaceWithPython:5</moduleId2_>
-				<port2_>
-					<name>InputMatrix</name>
-					<id>0</id>
-				</port2_>
-			</item>
-			<item>
 				<moduleId1_>InterfaceWithPython:5</moduleId1_>
 				<port1_>
 					<name>PythonMatrix2</name>
@@ -7793,10 +7810,46 @@ matrixOutput1 = mean_bspm</value>
 					<name>PythonMatrix1</name>
 					<id>0</id>
 				</port1_>
-				<moduleId2_>InterfaceWithPython:4</moduleId2_>
+				<moduleId2_>InterfaceWithPython:7</moduleId2_>
 				<port2_>
 					<name>InputMatrix</name>
-					<id>2</id>
+					<id>0</id>
+				</port2_>
+			</item>
+			<item>
+				<moduleId1_>InterfaceWithPython:7</moduleId1_>
+				<port1_>
+					<name>PythonMatrix1</name>
+					<id>0</id>
+				</port1_>
+				<moduleId2_>EvaluateLinearAlgebraBinary:2</moduleId2_>
+				<port2_>
+					<name>RHS</name>
+					<id>0</id>
+				</port2_>
+			</item>
+			<item>
+				<moduleId1_>InterfaceWithPython:7</moduleId1_>
+				<port1_>
+					<name>PythonMatrix1</name>
+					<id>0</id>
+				</port1_>
+				<moduleId2_>EvaluateLinearAlgebraUnary:2</moduleId2_>
+				<port2_>
+					<name>InputMatrix</name>
+					<id>0</id>
+				</port2_>
+			</item>
+			<item>
+				<moduleId1_>InterfaceWithPython:7</moduleId1_>
+				<port1_>
+					<name>PythonMatrix1</name>
+					<id>0</id>
+				</port1_>
+				<moduleId2_>InterfaceWithPython:5</moduleId2_>
+				<port2_>
+					<name>InputMatrix</name>
+					<id>1</id>
 				</port2_>
 			</item>
 			<item>
@@ -8327,8 +8380,8 @@ matrixOutput1 = mean_bspm</value>
 		<item>
 			<first>EvaluateLinearAlgebraUnary:2</first>
 			<second>
-				<first>-7.12000000000000000e+02</first>
-				<second>3.84000000000000000e+02</second>
+				<first>-7.08000000000000000e+02</first>
+				<second>4.01000000000000000e+02</second>
 			</second>
 		</item>
 		<item>
@@ -8402,13 +8455,6 @@ matrixOutput1 = mean_bspm</value>
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:4</first>
-			<second>
-				<first>-7.14068143125000120e+02</first>
-				<second>-8.43022714374999964e+02</second>
-			</second>
-		</item>
-		<item>
 			<first>InterfaceWithPython:5</first>
 			<second>
 				<first>-6.69000000000000000e+02</first>
@@ -8420,6 +8466,13 @@ matrixOutput1 = mean_bspm</value>
 			<second>
 				<first>-8.76000000000000000e+02</first>
 				<second>-9.16000000000000000e+02</second>
+			</second>
+		</item>
+		<item>
+			<first>InterfaceWithPython:7</first>
+			<second>
+				<first>-7.79000000000000000e+02</first>
+				<second>-8.38000000000000000e+02</second>
 			</second>
 		</item>
 		<item>
@@ -8705,21 +8758,6 @@ Signal averaging</noteText>
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:4</first>
-			<second>
-				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;.SF NS Text&apos;; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;additional&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;processing&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</noteHTML>
-				<noteText>additional
-processing</noteText>
-				<position>5</position>
-				<fontSize>13</fontSize>
-			</second>
-		</item>
-		<item>
 			<first>InterfaceWithPython:5</first>
 			<second>
 				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -8744,6 +8782,21 @@ p, li { white-space: pre-wrap; }
 				<noteText>signal 
 averaging</noteText>
 				<position>5</position>
+				<fontSize>13</fontSize>
+			</second>
+		</item>
+		<item>
+			<first>InterfaceWithPython:7</first>
+			<second>
+				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;.SF NS Text&apos;; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;additional &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;processing&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</noteHTML>
+				<noteText>additional 
+processing</noteText>
+				<position>0</position>
 				<fontSize>13</fontSize>
 			</second>
 		</item>
@@ -9009,15 +9062,15 @@ p, li { white-space: pre-wrap; }
 			<second>3</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:4</first>
-			<second>3</second>
-		</item>
-		<item>
 			<first>InterfaceWithPython:5</first>
 			<second>6</second>
 		</item>
 		<item>
 			<first>InterfaceWithPython:6</first>
+			<second>3</second>
+		</item>
+		<item>
+			<first>InterfaceWithPython:7</first>
 			<second>3</second>
 		</item>
 		<item>
