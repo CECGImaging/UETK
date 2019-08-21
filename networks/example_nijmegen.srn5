@@ -1563,7 +1563,7 @@
 									<name>InputString:4</name>
 									<value>
 										<which>2</which>
-										<value>stringInput1</value>
+										<value>stringInput5</value>
 									</value>
 								</second>
 							</item>
@@ -1575,7 +1575,7 @@
 									<name>InputString:5</name>
 									<value>
 										<which>2</which>
-										<value>stringInput2</value>
+										<value>stringInput6</value>
 									</value>
 								</second>
 							</item>
@@ -1611,8 +1611,8 @@
 									<name>PythonCode</name>
 									<value>
 										<which>2</which>
-										<value>sd_input = stringInput1
-pd_input = stringInput2
+										<value>sd_input = stringInput5
+pd_input = stringInput6
 
 
 
@@ -1798,7 +1798,7 @@ print(&apos;loaded numpy&apos;)
 				</second>
 			</item>
 			<item>
-				<first>InterfaceWithPython:5</first>
+				<first>InterfaceWithPython:1</first>
 				<second>
 					<module>
 						<package_name_>SCIRun</package_name_>
@@ -1807,7 +1807,7 @@ print(&apos;loaded numpy&apos;)
 					</module>
 					<state>
 						<stateMap>
-							<count>16</count>
+							<count>17</count>
 							<item_version>0</item_version>
 							<item>
 								<first>
@@ -1847,6 +1847,18 @@ print(&apos;loaded numpy&apos;)
 							</item>
 							<item>
 								<first>
+									<name>InputString:1</name>
+								</first>
+								<second>
+									<name>InputString:1</name>
+									<value>
+										<which>2</which>
+										<value>stringInput2</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
 									<name>NumberOfRetries</name>
 								</first>
 								<second>
@@ -1880,6 +1892,9 @@ print(&apos;loaded numpy&apos;)
 										<value>#  creates a list and mask of leads to keep for scirun to interpolate
 
 print(&apos;Bad Lead Removal&apos;)
+
+import scipy.io
+
 scriptdata_fname = stringInput1
 #print(scriptdata_fname)
 
@@ -2045,7 +2060,7 @@ matrixOutput2 = [keep_map]</value>
 				</second>
 			</item>
 			<item>
-				<first>InterfaceWithPython:6</first>
+				<first>InterfaceWithPython:2</first>
 				<second>
 					<module>
 						<package_name_>SCIRun</package_name_>
@@ -2054,7 +2069,7 @@ matrixOutput2 = [keep_map]</value>
 					</module>
 					<state>
 						<stateMap>
-							<count>14</count>
+							<count>15</count>
 							<item_version>0</item_version>
 							<item>
 								<first>
@@ -2065,6 +2080,18 @@ matrixOutput2 = [keep_map]</value>
 									<value>
 										<which>2</which>
 										<value>stringInput1</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>InputString:1</name>
+								</first>
+								<second>
+									<name>InputString:1</name>
+									<value>
+										<which>2</which>
+										<value>stringInput2</value>
 									</value>
 								</second>
 							</item>
@@ -2104,6 +2131,9 @@ matrixOutput2 = [keep_map]</value>
 # assumes PFIEFER output but could be done with a list of files to load
 
 print(&apos;Signal Averaging&apos;)
+
+import scipy.io
+
 scriptdata_fname = stringInput1
 #print(scriptdata_fname)
 
@@ -2267,7 +2297,7 @@ matrixOutput1 = mean_bspm</value>
 				</second>
 			</item>
 			<item>
-				<first>InterfaceWithPython:7</first>
+				<first>InterfaceWithPython:3</first>
 				<second>
 					<module>
 						<package_name_>SCIRun</package_name_>
@@ -2276,7 +2306,7 @@ matrixOutput1 = mean_bspm</value>
 					</module>
 					<state>
 						<stateMap>
-							<count>15</count>
+							<count>17</count>
 							<item_version>0</item_version>
 							<item>
 								<first>
@@ -2299,6 +2329,30 @@ matrixOutput1 = mean_bspm</value>
 									<value>
 										<which>2</which>
 										<value>matrixInput2</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>InputMatrix:2</name>
+								</first>
+								<second>
+									<name>InputMatrix:2</name>
+									<value>
+										<which>2</which>
+										<value>matrixInput2</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>InputString:0</name>
+								</first>
+								<second>
+									<name>InputString:0</name>
+									<value>
+										<which>2</which>
+										<value>stringInput1</value>
 									</value>
 								</second>
 							</item>
@@ -2337,6 +2391,8 @@ matrixOutput1 = mean_bspm</value>
 										<value># this does a simple lowpass filter
 
 print(&apos;Low Pass filtering&apos;)
+
+from scipy.signal import butter, filtfilt
 
 fs = matrixInput2
 
@@ -6172,7 +6228,7 @@ matrixOutput1 = BSPM_new
 									<name>FacesColoring</name>
 									<value>
 										<which>0</which>
-										<value>0</value>
+										<value>1</value>
 									</value>
 								</second>
 							</item>
@@ -6762,7 +6818,7 @@ matrixOutput1 = BSPM_new
 					</module>
 					<state>
 						<stateMap>
-							<count>47</count>
+							<count>50</count>
 							<item_version>0</item_version>
 							<item>
 								<first>
@@ -6797,6 +6853,97 @@ matrixOutput1 = BSPM_new
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>CameraDistance</name>
+								</first>
+								<second>
+									<name>CameraDistance</name>
+									<value>
+										<which>1</which>
+										<value>2.67659484863281250e+02</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>CameraLookAt</name>
+								</first>
+								<second>
+									<name>CameraLookAt</name>
+									<value>
+										<which>5</which>
+										<value>
+											<count>3</count>
+											<item_version>0</item_version>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>2.01799964904785156e+01</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>-4.89949989318847656e+01</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>2.86000061035156250e+00</value>
+												</value>
+											</item>
+										</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>CameraRotation</name>
+								</first>
+								<second>
+									<name>CameraRotation</name>
+									<value>
+										<which>5</which>
+										<value>
+											<count>4</count>
+											<item_version>0</item_version>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>7.29075968265533447e-01</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>-6.59314274787902832e-01</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>-1.57955646514892578e-01</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>9.38231498003005981e-02</value>
+												</value>
+											</item>
+										</value>
 									</value>
 								</second>
 							</item>
@@ -7252,7 +7399,7 @@ matrixOutput1 = BSPM_new
 									<name>ShowViewer</name>
 									<value>
 										<which>3</which>
-										<value>1</value>
+										<value>0</value>
 									</value>
 								</second>
 							</item>
@@ -7738,10 +7885,10 @@ matrixOutput1 = BSPM_new
 					<name>PythonMatrix1</name>
 					<id>0</id>
 				</port1_>
-				<moduleId2_>InterfaceWithPython:7</moduleId2_>
+				<moduleId2_>InterfaceWithPython:3</moduleId2_>
 				<port2_>
 					<name>InputMatrix</name>
-					<id>1</id>
+					<id>2</id>
 				</port2_>
 			</item>
 			<item>
@@ -7762,7 +7909,7 @@ matrixOutput1 = BSPM_new
 					<name>PythonString2</name>
 					<id>0</id>
 				</port1_>
-				<moduleId2_>InterfaceWithPython:5</moduleId2_>
+				<moduleId2_>InterfaceWithPython:1</moduleId2_>
 				<port2_>
 					<name>InputString</name>
 					<id>0</id>
@@ -7774,14 +7921,14 @@ matrixOutput1 = BSPM_new
 					<name>PythonString2</name>
 					<id>0</id>
 				</port1_>
-				<moduleId2_>InterfaceWithPython:6</moduleId2_>
+				<moduleId2_>InterfaceWithPython:2</moduleId2_>
 				<port2_>
 					<name>InputString</name>
 					<id>0</id>
 				</port2_>
 			</item>
 			<item>
-				<moduleId1_>InterfaceWithPython:5</moduleId1_>
+				<moduleId1_>InterfaceWithPython:1</moduleId1_>
 				<port1_>
 					<name>PythonMatrix2</name>
 					<id>0</id>
@@ -7793,7 +7940,7 @@ matrixOutput1 = BSPM_new
 				</port2_>
 			</item>
 			<item>
-				<moduleId1_>InterfaceWithPython:6</moduleId1_>
+				<moduleId1_>InterfaceWithPython:2</moduleId1_>
 				<port1_>
 					<name>PythonMatrix1</name>
 					<id>0</id>
@@ -7805,19 +7952,19 @@ matrixOutput1 = BSPM_new
 				</port2_>
 			</item>
 			<item>
-				<moduleId1_>InterfaceWithPython:6</moduleId1_>
+				<moduleId1_>InterfaceWithPython:2</moduleId1_>
 				<port1_>
 					<name>PythonMatrix1</name>
 					<id>0</id>
 				</port1_>
-				<moduleId2_>InterfaceWithPython:7</moduleId2_>
+				<moduleId2_>InterfaceWithPython:3</moduleId2_>
 				<port2_>
 					<name>InputMatrix</name>
 					<id>0</id>
 				</port2_>
 			</item>
 			<item>
-				<moduleId1_>InterfaceWithPython:7</moduleId1_>
+				<moduleId1_>InterfaceWithPython:3</moduleId1_>
 				<port1_>
 					<name>PythonMatrix1</name>
 					<id>0</id>
@@ -7829,7 +7976,7 @@ matrixOutput1 = BSPM_new
 				</port2_>
 			</item>
 			<item>
-				<moduleId1_>InterfaceWithPython:7</moduleId1_>
+				<moduleId1_>InterfaceWithPython:3</moduleId1_>
 				<port1_>
 					<name>PythonMatrix1</name>
 					<id>0</id>
@@ -7841,12 +7988,12 @@ matrixOutput1 = BSPM_new
 				</port2_>
 			</item>
 			<item>
-				<moduleId1_>InterfaceWithPython:7</moduleId1_>
+				<moduleId1_>InterfaceWithPython:3</moduleId1_>
 				<port1_>
 					<name>PythonMatrix1</name>
 					<id>0</id>
 				</port1_>
-				<moduleId2_>InterfaceWithPython:5</moduleId2_>
+				<moduleId2_>InterfaceWithPython:1</moduleId2_>
 				<port2_>
 					<name>InputMatrix</name>
 					<id>1</id>
@@ -8455,23 +8602,23 @@ matrixOutput1 = BSPM_new
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:5</first>
+			<first>InterfaceWithPython:1</first>
 			<second>
 				<first>-6.69000000000000000e+02</first>
 				<second>-7.09000000000000000e+02</second>
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:6</first>
+			<first>InterfaceWithPython:2</first>
 			<second>
 				<first>-8.76000000000000000e+02</first>
 				<second>-9.16000000000000000e+02</second>
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:7</first>
+			<first>InterfaceWithPython:3</first>
 			<second>
-				<first>-7.79000000000000000e+02</first>
+				<first>-6.68000000000000000e+02</first>
 				<second>-8.38000000000000000e+02</second>
 			</second>
 		</item>
@@ -8758,7 +8905,7 @@ Signal averaging</noteText>
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:5</first>
+			<first>InterfaceWithPython:1</first>
 			<second>
 				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -8771,7 +8918,7 @@ p, li { white-space: pre-wrap; }
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:6</first>
+			<first>InterfaceWithPython:2</first>
 			<second>
 				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -8786,7 +8933,7 @@ averaging</noteText>
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:7</first>
+			<first>InterfaceWithPython:3</first>
 			<second>
 				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -9062,15 +9209,15 @@ p, li { white-space: pre-wrap; }
 			<second>3</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:5</first>
+			<first>InterfaceWithPython:1</first>
 			<second>6</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:6</first>
+			<first>InterfaceWithPython:2</first>
 			<second>3</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:7</first>
+			<first>InterfaceWithPython:3</first>
 			<second>3</second>
 		</item>
 		<item>

@@ -1050,6 +1050,8 @@
 										<value>sd_input = stringInput1
 pd_input = stringInput2
 
+import scipy.io
+
 # intialize script and processing data
 eng.eval(&quot;global SCRIPTDATA PROCESSINGDATA&quot;,nargout = 0)
 
@@ -1262,7 +1264,7 @@ import numpy as np
 				</second>
 			</item>
 			<item>
-				<first>InterfaceWithPython:4</first>
+				<first>InterfaceWithPython:1</first>
 				<second>
 					<module>
 						<package_name_>SCIRun</package_name_>
@@ -1330,6 +1332,8 @@ import numpy as np
 									<value>
 										<which>2</which>
 										<value># this does a simple lowpass filter
+
+from scipy.signal import butter, filtfilt
 
 fs = matrixInput2
 
@@ -1482,7 +1486,7 @@ matrixOutput1 = BSPM_new
 				</second>
 			</item>
 			<item>
-				<first>InterfaceWithPython:5</first>
+				<first>InterfaceWithPython:2</first>
 				<second>
 					<module>
 						<package_name_>SCIRun</package_name_>
@@ -3663,7 +3667,7 @@ matrixOutput1 = [keep_leads]</value>
 					</module>
 					<state>
 						<stateMap>
-							<count>39</count>
+							<count>50</count>
 							<item_version>0</item_version>
 							<item>
 								<first>
@@ -3698,6 +3702,97 @@ matrixOutput1 = [keep_leads]</value>
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>CameraDistance</name>
+								</first>
+								<second>
+									<name>CameraDistance</name>
+									<value>
+										<which>1</which>
+										<value>3.00000000000000000e+00</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>CameraLookAt</name>
+								</first>
+								<second>
+									<name>CameraLookAt</name>
+									<value>
+										<which>5</which>
+										<value>
+											<count>3</count>
+											<item_version>0</item_version>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>0.00000000000000000e+00</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>0.00000000000000000e+00</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>0.00000000000000000e+00</value>
+												</value>
+											</item>
+										</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>CameraRotation</name>
+								</first>
+								<second>
+									<name>CameraRotation</name>
+									<value>
+										<which>5</which>
+										<value>
+											<count>4</count>
+											<item_version>0</item_version>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>1.00000000000000000e+00</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>0.00000000000000000e+00</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>0.00000000000000000e+00</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>0.00000000000000000e+00</value>
+												</value>
+											</item>
+										</value>
 									</value>
 								</second>
 							</item>
@@ -3799,6 +3894,18 @@ matrixOutput1 = [keep_leads]</value>
 							</item>
 							<item>
 								<first>
+									<name>HeadLightAzimuth</name>
+								</first>
+								<second>
+									<name>HeadLightAzimuth</name>
+									<value>
+										<which>0</which>
+										<value>180</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
 									<name>HeadLightColor</name>
 								</first>
 								<second>
@@ -3806,6 +3913,18 @@ matrixOutput1 = [keep_leads]</value>
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>HeadLightInclination</name>
+								</first>
+								<second>
+									<name>HeadLightInclination</name>
+									<value>
+										<which>0</which>
+										<value>90</value>
 									</value>
 								</second>
 							</item>
@@ -3823,6 +3942,18 @@ matrixOutput1 = [keep_leads]</value>
 							</item>
 							<item>
 								<first>
+									<name>Light1Azimuth</name>
+								</first>
+								<second>
+									<name>Light1Azimuth</name>
+									<value>
+										<which>0</which>
+										<value>180</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
 									<name>Light1Color</name>
 								</first>
 								<second>
@@ -3830,6 +3961,18 @@ matrixOutput1 = [keep_leads]</value>
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>Light1Inclination</name>
+								</first>
+								<second>
+									<name>Light1Inclination</name>
+									<value>
+										<which>0</which>
+										<value>90</value>
 									</value>
 								</second>
 							</item>
@@ -3847,6 +3990,18 @@ matrixOutput1 = [keep_leads]</value>
 							</item>
 							<item>
 								<first>
+									<name>Light2Azimuth</name>
+								</first>
+								<second>
+									<name>Light2Azimuth</name>
+									<value>
+										<which>0</which>
+										<value>180</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
 									<name>Light2Color</name>
 								</first>
 								<second>
@@ -3854,6 +4009,18 @@ matrixOutput1 = [keep_leads]</value>
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>Light2Inclination</name>
+								</first>
+								<second>
+									<name>Light2Inclination</name>
+									<value>
+										<which>0</which>
+										<value>90</value>
 									</value>
 								</second>
 							</item>
@@ -3871,6 +4038,18 @@ matrixOutput1 = [keep_leads]</value>
 							</item>
 							<item>
 								<first>
+									<name>Light3Azimuth</name>
+								</first>
+								<second>
+									<name>Light3Azimuth</name>
+									<value>
+										<which>0</which>
+										<value>180</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
 									<name>Light3Color</name>
 								</first>
 								<second>
@@ -3878,6 +4057,18 @@ matrixOutput1 = [keep_leads]</value>
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>Light3Inclination</name>
+								</first>
+								<second>
+									<name>Light3Inclination</name>
+									<value>
+										<which>0</which>
+										<value>90</value>
 									</value>
 								</second>
 							</item>
@@ -4363,7 +4554,7 @@ matrixOutput1 = [keep_leads]</value>
 					<name>PythonMatrix1</name>
 					<id>0</id>
 				</port1_>
-				<moduleId2_>InterfaceWithPython:4</moduleId2_>
+				<moduleId2_>InterfaceWithPython:1</moduleId2_>
 				<port2_>
 					<name>InputMatrix</name>
 					<id>0</id>
@@ -4375,7 +4566,7 @@ matrixOutput1 = [keep_leads]</value>
 					<name>PythonMatrix2</name>
 					<id>0</id>
 				</port1_>
-				<moduleId2_>InterfaceWithPython:4</moduleId2_>
+				<moduleId2_>InterfaceWithPython:1</moduleId2_>
 				<port2_>
 					<name>InputMatrix</name>
 					<id>1</id>
@@ -4387,7 +4578,7 @@ matrixOutput1 = [keep_leads]</value>
 					<name>PythonMatrix3</name>
 					<id>0</id>
 				</port1_>
-				<moduleId2_>InterfaceWithPython:5</moduleId2_>
+				<moduleId2_>InterfaceWithPython:2</moduleId2_>
 				<port2_>
 					<name>InputMatrix</name>
 					<id>1</id>
@@ -4406,7 +4597,7 @@ matrixOutput1 = [keep_leads]</value>
 				</port2_>
 			</item>
 			<item>
-				<moduleId1_>InterfaceWithPython:4</moduleId1_>
+				<moduleId1_>InterfaceWithPython:1</moduleId1_>
 				<port1_>
 					<name>PythonMatrix1</name>
 					<id>0</id>
@@ -4418,7 +4609,7 @@ matrixOutput1 = [keep_leads]</value>
 				</port2_>
 			</item>
 			<item>
-				<moduleId1_>InterfaceWithPython:4</moduleId1_>
+				<moduleId1_>InterfaceWithPython:1</moduleId1_>
 				<port1_>
 					<name>PythonMatrix1</name>
 					<id>0</id>
@@ -4430,7 +4621,7 @@ matrixOutput1 = [keep_leads]</value>
 				</port2_>
 			</item>
 			<item>
-				<moduleId1_>InterfaceWithPython:5</moduleId1_>
+				<moduleId1_>InterfaceWithPython:2</moduleId1_>
 				<port1_>
 					<name>PythonMatrix1</name>
 					<id>0</id>
@@ -4756,14 +4947,14 @@ matrixOutput1 = [keep_leads]</value>
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:4</first>
+			<first>InterfaceWithPython:1</first>
 			<second>
 				<first>-6.36000000000000000e+02</first>
 				<second>-7.31000000000000000e+02</second>
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:5</first>
+			<first>InterfaceWithPython:2</first>
 			<second>
 				<first>-7.71000000000000000e+02</first>
 				<second>-6.32000000000000000e+02</second>
@@ -4950,7 +5141,7 @@ Signal averaging</noteText>
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:4</first>
+			<first>InterfaceWithPython:1</first>
 			<second>
 				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -4965,7 +5156,7 @@ processing</noteText>
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:5</first>
+			<first>InterfaceWithPython:2</first>
 			<second>
 				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -5126,11 +5317,11 @@ p, li { white-space: pre-wrap; }
 			<second>3</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:4</first>
+			<first>InterfaceWithPython:1</first>
 			<second>3</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:5</first>
+			<first>InterfaceWithPython:2</first>
 			<second>6</second>
 		</item>
 		<item>

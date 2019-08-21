@@ -4,7 +4,7 @@
 <networkFile class_id="0" tracking_level="0" version="6">
 	<networkInfo class_id="1" tracking_level="0" version="0">
 		<modules class_id="2" tracking_level="0" version="0">
-			<count>29</count>
+			<count>32</count>
 			<item_version>0</item_version>
 			<item class_id="3" tracking_level="0" version="0">
 				<first>BuildBEMatrix:0</first>
@@ -390,62 +390,6 @@
 				</second>
 			</item>
 			<item>
-				<first>CreateString:0</first>
-				<second>
-					<module>
-						<package_name_>SCIRun</package_name_>
-						<category_name_>String</category_name_>
-						<module_name_>CreateString</module_name_>
-					</module>
-					<state>
-						<stateMap>
-							<count>1</count>
-							<item_version>0</item_version>
-							<item>
-								<first>
-									<name>InputString</name>
-								</first>
-								<second>
-									<name>InputString</name>
-									<value>
-										<which>2</which>
-										<value>/Users/jess/Edgar/database/Unmodified/Human_Pacing_Site/Nijmegen-2004-12-09/Interventions/SCRIPTDATA.mat</value>
-									</value>
-								</second>
-							</item>
-						</stateMap>
-					</state>
-				</second>
-			</item>
-			<item>
-				<first>CreateString:1</first>
-				<second>
-					<module>
-						<package_name_>SCIRun</package_name_>
-						<category_name_>String</category_name_>
-						<module_name_>CreateString</module_name_>
-					</module>
-					<state>
-						<stateMap>
-							<count>1</count>
-							<item_version>0</item_version>
-							<item>
-								<first>
-									<name>InputString</name>
-								</first>
-								<second>
-									<name>InputString</name>
-									<value>
-										<which>2</which>
-										<value>/Users/jess/Edgar/database/Unmodified/Human_Pacing_Site/Nijmegen-2004-12-09/Interventions/PROCESSINGDATA.mat</value>
-									</value>
-								</second>
-							</item>
-						</stateMap>
-					</state>
-				</second>
-			</item>
-			<item>
 				<first>EvaluateLinearAlgebraBinary:0</first>
 				<second>
 					<module>
@@ -766,6 +710,261 @@
 				</second>
 			</item>
 			<item>
+				<first>ImportFieldsFromMatlab:0</first>
+				<second>
+					<module>
+						<package_name_>SCIRun</package_name_>
+						<category_name_>Matlab</category_name_>
+						<module_name_>ImportFieldsFromMatlab</module_name_>
+					</module>
+					<state>
+						<stateMap>
+							<count>2</count>
+							<item_version>0</item_version>
+							<item>
+								<first>
+									<name>Filename</name>
+								</first>
+								<second>
+									<name>Filename</name>
+									<value>
+										<which>2</which>
+										<value>%SCIRUNDATADIR%/Human_Pacing_Site/Nijmegen-2004-12-09/Interventions/PROCESSINGDATA.mat</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PortChoices</name>
+								</first>
+								<second>
+									<name>PortChoices</name>
+									<value>
+										<which>5</which>
+										<value>
+											<count>6</count>
+											<item_version>0</item_version>
+											<item>
+												<name></name>
+												<value>
+													<which>2</which>
+													<value>&lt;none&gt;</value>
+												</value>
+											</item>
+											<item>
+												<name></name>
+												<value>
+													<which>2</which>
+													<value>&lt;none&gt;</value>
+												</value>
+											</item>
+											<item>
+												<name></name>
+												<value>
+													<which>2</which>
+													<value>&lt;none&gt;</value>
+												</value>
+											</item>
+											<item>
+												<name></name>
+												<value>
+													<which>2</which>
+													<value>&lt;none&gt;</value>
+												</value>
+											</item>
+											<item>
+												<name></name>
+												<value>
+													<which>2</which>
+													<value>&lt;none&gt;</value>
+												</value>
+											</item>
+											<item>
+												<name></name>
+												<value>
+													<which>2</which>
+													<value>&lt;none&gt;</value>
+												</value>
+											</item>
+										</value>
+									</value>
+								</second>
+							</item>
+						</stateMap>
+					</state>
+				</second>
+			</item>
+			<item>
+				<first>ImportFieldsFromMatlab:1</first>
+				<second>
+					<module>
+						<package_name_>SCIRun</package_name_>
+						<category_name_>Matlab</category_name_>
+						<module_name_>ImportFieldsFromMatlab</module_name_>
+					</module>
+					<state>
+						<stateMap>
+							<count>2</count>
+							<item_version>0</item_version>
+							<item>
+								<first>
+									<name>Filename</name>
+								</first>
+								<second>
+									<name>Filename</name>
+									<value>
+										<which>2</which>
+										<value>%SCIRUNDATADIR%/Human_Pacing_Site/Nijmegen-2004-12-09/Interventions/SCRIPTDATA.mat</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PortChoices</name>
+								</first>
+								<second>
+									<name>PortChoices</name>
+									<value>
+										<which>5</which>
+										<value>
+											<count>6</count>
+											<item_version>0</item_version>
+											<item>
+												<name></name>
+												<value>
+													<which>2</which>
+													<value>&lt;none&gt;</value>
+												</value>
+											</item>
+											<item>
+												<name></name>
+												<value>
+													<which>2</which>
+													<value>&lt;none&gt;</value>
+												</value>
+											</item>
+											<item>
+												<name></name>
+												<value>
+													<which>2</which>
+													<value>&lt;none&gt;</value>
+												</value>
+											</item>
+											<item>
+												<name></name>
+												<value>
+													<which>2</which>
+													<value>&lt;none&gt;</value>
+												</value>
+											</item>
+											<item>
+												<name></name>
+												<value>
+													<which>2</which>
+													<value>&lt;none&gt;</value>
+												</value>
+											</item>
+											<item>
+												<name></name>
+												<value>
+													<which>2</which>
+													<value>&lt;none&gt;</value>
+												</value>
+											</item>
+										</value>
+									</value>
+								</second>
+							</item>
+						</stateMap>
+					</state>
+				</second>
+			</item>
+			<item>
+				<first>ImportMatricesFromMatlab:0</first>
+				<second>
+					<module>
+						<package_name_>SCIRun</package_name_>
+						<category_name_>Matlab</category_name_>
+						<module_name_>ImportMatricesFromMatlab</module_name_>
+					</module>
+					<state>
+						<stateMap>
+							<count>2</count>
+							<item_version>0</item_version>
+							<item>
+								<first>
+									<name>Filename</name>
+								</first>
+								<second>
+									<name>Filename</name>
+									<value>
+										<which>2</which>
+										<value>%SCIRUNDATADIR%/Human_Pacing_Site/Nijmegen-2004-12-09/Interventions/PROCESSINGDATA_II.mat</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>PortChoices</name>
+								</first>
+								<second>
+									<name>PortChoices</name>
+									<value>
+										<which>5</which>
+										<value>
+											<count>6</count>
+											<item_version>0</item_version>
+											<item>
+												<name></name>
+												<value>
+													<which>2</which>
+													<value>&lt;none&gt;</value>
+												</value>
+											</item>
+											<item>
+												<name></name>
+												<value>
+													<which>2</which>
+													<value>&lt;none&gt;</value>
+												</value>
+											</item>
+											<item>
+												<name></name>
+												<value>
+													<which>2</which>
+													<value>&lt;none&gt;</value>
+												</value>
+											</item>
+											<item>
+												<name></name>
+												<value>
+													<which>2</which>
+													<value>&lt;none&gt;</value>
+												</value>
+											</item>
+											<item>
+												<name></name>
+												<value>
+													<which>2</which>
+													<value>&lt;none&gt;</value>
+												</value>
+											</item>
+											<item>
+												<name></name>
+												<value>
+													<which>2</which>
+													<value>&lt;none&gt;</value>
+												</value>
+											</item>
+										</value>
+									</value>
+								</second>
+							</item>
+						</stateMap>
+					</state>
+				</second>
+			</item>
+			<item>
 				<first>InterfaceWithPython:0</first>
 				<second>
 					<module>
@@ -871,6 +1070,8 @@
 										<which>2</which>
 										<value>sd_input = stringInput1
 pd_input = stringInput2
+
+import scipy.io
 
 # intialize script and processing data
 eng.eval(&quot;global SCRIPTDATA PROCESSINGDATA&quot;,nargout = 0)
@@ -1077,7 +1278,7 @@ import numpy as np
 				</second>
 			</item>
 			<item>
-				<first>InterfaceWithPython:4</first>
+				<first>InterfaceWithPython:1</first>
 				<second>
 					<module>
 						<package_name_>SCIRun</package_name_>
@@ -1145,6 +1346,8 @@ import numpy as np
 									<value>
 										<which>2</which>
 										<value># this does a simple lowpass filter
+
+from scipy.signal import butter, filtfilt
 
 fs = matrixInput2
 
@@ -1717,6 +1920,62 @@ matrixOutput1 = BSPM_new
 				</second>
 			</item>
 			<item>
+				<first>PrintStringIntoString:0</first>
+				<second>
+					<module>
+						<package_name_>SCIRun</package_name_>
+						<category_name_>String</category_name_>
+						<module_name_>PrintStringIntoString</module_name_>
+					</module>
+					<state>
+						<stateMap>
+							<count>1</count>
+							<item_version>0</item_version>
+							<item>
+								<first>
+									<name>FormatString</name>
+								</first>
+								<second>
+									<name>FormatString</name>
+									<value>
+										<which>2</which>
+										<value>%s../Interventions/PROCESSINGDATA.mat</value>
+									</value>
+								</second>
+							</item>
+						</stateMap>
+					</state>
+				</second>
+			</item>
+			<item>
+				<first>PrintStringIntoString:1</first>
+				<second>
+					<module>
+						<package_name_>SCIRun</package_name_>
+						<category_name_>String</category_name_>
+						<module_name_>PrintStringIntoString</module_name_>
+					</module>
+					<state>
+						<stateMap>
+							<count>1</count>
+							<item_version>0</item_version>
+							<item>
+								<first>
+									<name>FormatString</name>
+								</first>
+								<second>
+									<name>FormatString</name>
+									<value>
+										<which>2</which>
+										<value>%sInterventions/SCRIPTDATA.mat</value>
+									</value>
+								</second>
+							</item>
+						</stateMap>
+					</state>
+				</second>
+			</item>
+			<item>
 				<first>ReadField:0</first>
 				<second>
 					<module>
@@ -1992,94 +2251,6 @@ matrixOutput1 = BSPM_new
 									<name>Symmetric</name>
 									<value>
 										<which>3</which>
-										<value>0</value>
-									</value>
-								</second>
-							</item>
-						</stateMap>
-					</state>
-				</second>
-			</item>
-			<item>
-				<first>SelectSubMatrix:0</first>
-				<second>
-					<module>
-						<package_name_>SCIRun</package_name_>
-						<category_name_>Math</category_name_>
-						<module_name_>SelectSubMatrix</module_name_>
-					</module>
-					<state>
-						<stateMap>
-							<count>6</count>
-							<item_version>0</item_version>
-							<item>
-								<first>
-									<name>columnCheckBox</name>
-								</first>
-								<second>
-									<name>columnCheckBox</name>
-									<value>
-										<which>3</which>
-										<value>0</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>columnEndSpinBox</name>
-								</first>
-								<second>
-									<name>columnEndSpinBox</name>
-									<value>
-										<which>0</which>
-										<value>0</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>columnStartSpinBox</name>
-								</first>
-								<second>
-									<name>columnStartSpinBox</name>
-									<value>
-										<which>0</which>
-										<value>0</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>rowCheckBox</name>
-								</first>
-								<second>
-									<name>rowCheckBox</name>
-									<value>
-										<which>3</which>
-										<value>0</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>rowEndSpinBox</name>
-								</first>
-								<second>
-									<name>rowEndSpinBox</name>
-									<value>
-										<which>0</which>
-										<value>0</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>rowStartSpinBox</name>
-								</first>
-								<second>
-									<name>rowStartSpinBox</name>
-									<value>
-										<which>0</which>
 										<value>0</value>
 									</value>
 								</second>
@@ -3237,6 +3408,22 @@ matrixOutput1 = BSPM_new
 				</second>
 			</item>
 			<item>
+				<first>SplitFileName:1</first>
+				<second>
+					<module>
+						<package_name_>SCIRun</package_name_>
+						<category_name_>String</category_name_>
+						<module_name_>SplitFileName</module_name_>
+					</module>
+					<state>
+						<stateMap>
+							<count>0</count>
+							<item_version>0</item_version>
+						</stateMap>
+					</state>
+				</second>
+			</item>
+			<item>
 				<first>ViewScene:0</first>
 				<second>
 					<module>
@@ -3246,7 +3433,7 @@ matrixOutput1 = BSPM_new
 					</module>
 					<state>
 						<stateMap>
-							<count>39</count>
+							<count>50</count>
 							<item_version>0</item_version>
 							<item>
 								<first>
@@ -3281,6 +3468,97 @@ matrixOutput1 = BSPM_new
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>CameraDistance</name>
+								</first>
+								<second>
+									<name>CameraDistance</name>
+									<value>
+										<which>1</which>
+										<value>3.00000000000000000e+00</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>CameraLookAt</name>
+								</first>
+								<second>
+									<name>CameraLookAt</name>
+									<value>
+										<which>5</which>
+										<value>
+											<count>3</count>
+											<item_version>0</item_version>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>0.00000000000000000e+00</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>0.00000000000000000e+00</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>0.00000000000000000e+00</value>
+												</value>
+											</item>
+										</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>CameraRotation</name>
+								</first>
+								<second>
+									<name>CameraRotation</name>
+									<value>
+										<which>5</which>
+										<value>
+											<count>4</count>
+											<item_version>0</item_version>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>1.00000000000000000e+00</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>0.00000000000000000e+00</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>0.00000000000000000e+00</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>0.00000000000000000e+00</value>
+												</value>
+											</item>
+										</value>
 									</value>
 								</second>
 							</item>
@@ -3382,6 +3660,18 @@ matrixOutput1 = BSPM_new
 							</item>
 							<item>
 								<first>
+									<name>HeadLightAzimuth</name>
+								</first>
+								<second>
+									<name>HeadLightAzimuth</name>
+									<value>
+										<which>0</which>
+										<value>180</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
 									<name>HeadLightColor</name>
 								</first>
 								<second>
@@ -3389,6 +3679,18 @@ matrixOutput1 = BSPM_new
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>HeadLightInclination</name>
+								</first>
+								<second>
+									<name>HeadLightInclination</name>
+									<value>
+										<which>0</which>
+										<value>90</value>
 									</value>
 								</second>
 							</item>
@@ -3406,6 +3708,18 @@ matrixOutput1 = BSPM_new
 							</item>
 							<item>
 								<first>
+									<name>Light1Azimuth</name>
+								</first>
+								<second>
+									<name>Light1Azimuth</name>
+									<value>
+										<which>0</which>
+										<value>180</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
 									<name>Light1Color</name>
 								</first>
 								<second>
@@ -3413,6 +3727,18 @@ matrixOutput1 = BSPM_new
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>Light1Inclination</name>
+								</first>
+								<second>
+									<name>Light1Inclination</name>
+									<value>
+										<which>0</which>
+										<value>90</value>
 									</value>
 								</second>
 							</item>
@@ -3430,6 +3756,18 @@ matrixOutput1 = BSPM_new
 							</item>
 							<item>
 								<first>
+									<name>Light2Azimuth</name>
+								</first>
+								<second>
+									<name>Light2Azimuth</name>
+									<value>
+										<which>0</which>
+										<value>180</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
 									<name>Light2Color</name>
 								</first>
 								<second>
@@ -3437,6 +3775,18 @@ matrixOutput1 = BSPM_new
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>Light2Inclination</name>
+								</first>
+								<second>
+									<name>Light2Inclination</name>
+									<value>
+										<which>0</which>
+										<value>90</value>
 									</value>
 								</second>
 							</item>
@@ -3454,6 +3804,18 @@ matrixOutput1 = BSPM_new
 							</item>
 							<item>
 								<first>
+									<name>Light3Azimuth</name>
+								</first>
+								<second>
+									<name>Light3Azimuth</name>
+									<value>
+										<which>0</which>
+										<value>180</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
 									<name>Light3Color</name>
 								</first>
 								<second>
@@ -3461,6 +3823,18 @@ matrixOutput1 = BSPM_new
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>Light3Inclination</name>
+								</first>
+								<second>
+									<name>Light3Inclination</name>
+									<value>
+										<which>0</which>
+										<value>90</value>
 									</value>
 								</second>
 							</item>
@@ -3722,7 +4096,7 @@ matrixOutput1 = BSPM_new
 			</item>
 		</modules>
 		<connections class_id="13" tracking_level="0" version="0">
-			<count>36</count>
+			<count>39</count>
 			<item_version>0</item_version>
 			<item class_id="14" tracking_level="0" version="0">
 				<moduleId1_>BuildBEMatrix:0</moduleId1_>
@@ -3806,30 +4180,6 @@ matrixOutput1 = BSPM_new
 				<port2_>
 					<name>ColorMapObject</name>
 					<id>0</id>
-				</port2_>
-			</item>
-			<item>
-				<moduleId1_>CreateString:0</moduleId1_>
-				<port1_>
-					<name>NewString</name>
-					<id>0</id>
-				</port1_>
-				<moduleId2_>InterfaceWithPython:0</moduleId2_>
-				<port2_>
-					<name>InputString</name>
-					<id>2</id>
-				</port2_>
-			</item>
-			<item>
-				<moduleId1_>CreateString:1</moduleId1_>
-				<port1_>
-					<name>NewString</name>
-					<id>0</id>
-				</port1_>
-				<moduleId2_>InterfaceWithPython:0</moduleId2_>
-				<port2_>
-					<name>InputString</name>
-					<id>3</id>
 				</port2_>
 			</item>
 			<item>
@@ -3934,7 +4284,7 @@ matrixOutput1 = BSPM_new
 					<name>PythonMatrix1</name>
 					<id>0</id>
 				</port1_>
-				<moduleId2_>InterfaceWithPython:4</moduleId2_>
+				<moduleId2_>InterfaceWithPython:1</moduleId2_>
 				<port2_>
 					<name>InputMatrix</name>
 					<id>0</id>
@@ -3946,14 +4296,14 @@ matrixOutput1 = BSPM_new
 					<name>PythonMatrix2</name>
 					<id>0</id>
 				</port1_>
-				<moduleId2_>InterfaceWithPython:4</moduleId2_>
+				<moduleId2_>InterfaceWithPython:1</moduleId2_>
 				<port2_>
 					<name>InputMatrix</name>
 					<id>1</id>
 				</port2_>
 			</item>
 			<item>
-				<moduleId1_>InterfaceWithPython:4</moduleId1_>
+				<moduleId1_>InterfaceWithPython:1</moduleId1_>
 				<port1_>
 					<name>PythonMatrix1</name>
 					<id>0</id>
@@ -3965,7 +4315,7 @@ matrixOutput1 = BSPM_new
 				</port2_>
 			</item>
 			<item>
-				<moduleId1_>InterfaceWithPython:4</moduleId1_>
+				<moduleId1_>InterfaceWithPython:1</moduleId1_>
 				<port1_>
 					<name>PythonMatrix1</name>
 					<id>0</id>
@@ -3974,6 +4324,30 @@ matrixOutput1 = BSPM_new
 				<port2_>
 					<name>MeasuredPotentials</name>
 					<id>0</id>
+				</port2_>
+			</item>
+			<item>
+				<moduleId1_>PrintStringIntoString:0</moduleId1_>
+				<port1_>
+					<name>Output</name>
+					<id>0</id>
+				</port1_>
+				<moduleId2_>InterfaceWithPython:0</moduleId2_>
+				<port2_>
+					<name>InputString</name>
+					<id>3</id>
+				</port2_>
+			</item>
+			<item>
+				<moduleId1_>PrintStringIntoString:1</moduleId1_>
+				<port1_>
+					<name>Output</name>
+					<id>0</id>
+				</port1_>
+				<moduleId2_>InterfaceWithPython:0</moduleId2_>
+				<port2_>
+					<name>InputString</name>
+					<id>2</id>
 				</port2_>
 			</item>
 			<item>
@@ -4021,6 +4395,18 @@ matrixOutput1 = BSPM_new
 				<moduleId2_>SetFieldData:0</moduleId2_>
 				<port2_>
 					<name>InputField</name>
+					<id>0</id>
+				</port2_>
+			</item>
+			<item>
+				<moduleId1_>ReadField:1</moduleId1_>
+				<port1_>
+					<name>FileLoaded</name>
+					<id>0</id>
+				</port1_>
+				<moduleId2_>SplitFileName:1</moduleId2_>
+				<port2_>
+					<name>Full_Filename</name>
 					<id>0</id>
 				</port2_>
 			</item>
@@ -4156,10 +4542,34 @@ matrixOutput1 = BSPM_new
 					<id>0</id>
 				</port2_>
 			</item>
+			<item>
+				<moduleId1_>SplitFileName:1</moduleId1_>
+				<port1_>
+					<name>Pathname</name>
+					<id>0</id>
+				</port1_>
+				<moduleId2_>PrintStringIntoString:0</moduleId2_>
+				<port2_>
+					<name>Input</name>
+					<id>2</id>
+				</port2_>
+			</item>
+			<item>
+				<moduleId1_>SplitFileName:1</moduleId1_>
+				<port1_>
+					<name>Pathname</name>
+					<id>0</id>
+				</port1_>
+				<moduleId2_>PrintStringIntoString:1</moduleId2_>
+				<port2_>
+					<name>Input</name>
+					<id>0</id>
+				</port2_>
+			</item>
 		</connections>
 	</networkInfo>
 	<modulePositions class_id="16" tracking_level="0" version="0">
-		<count>29</count>
+		<count>32</count>
 		<item_version>0</item_version>
 		<item class_id="17" tracking_level="0" version="0">
 			<first>BuildBEMatrix:0</first>
@@ -4204,20 +4614,6 @@ matrixOutput1 = BSPM_new
 			</second>
 		</item>
 		<item>
-			<first>CreateString:0</first>
-			<second>
-				<first>-5.87229249999999979e+02</first>
-				<second>-5.35933999999999742e+02</second>
-			</second>
-		</item>
-		<item>
-			<first>CreateString:1</first>
-			<second>
-				<first>-4.17983124999999859e+02</first>
-				<second>-5.36675250000000005e+02</second>
-			</second>
-		</item>
-		<item>
 			<first>EvaluateLinearAlgebraBinary:0</first>
 			<second>
 				<first>-1.17000000000000000e+02</first>
@@ -4253,16 +4649,37 @@ matrixOutput1 = BSPM_new
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:0</first>
+			<first>ImportFieldsFromMatlab:0</first>
 			<second>
-				<first>-5.37849999999999909e+02</first>
-				<second>-3.41600000000000136e+02</second>
+				<first>-4.96000000000000000e+02</first>
+				<second>-6.77000000000000000e+02</second>
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:4</first>
+			<first>ImportFieldsFromMatlab:1</first>
 			<second>
-				<first>-5.09000000000000000e+02</first>
+				<first>-7.20000000000000000e+02</first>
+				<second>-6.71000000000000000e+02</second>
+			</second>
+		</item>
+		<item>
+			<first>ImportMatricesFromMatlab:0</first>
+			<second>
+				<first>-2.99000000000000000e+02</first>
+				<second>-5.85000000000000000e+02</second>
+			</second>
+		</item>
+		<item>
+			<first>InterfaceWithPython:0</first>
+			<second>
+				<first>-5.80849999999999909e+02</first>
+				<second>-3.43600000000000136e+02</second>
+			</second>
+		</item>
+		<item>
+			<first>InterfaceWithPython:1</first>
+			<second>
+				<first>-5.10000000000000000e+02</first>
 				<second>-2.24000000000000000e+02</second>
 			</second>
 		</item>
@@ -4281,6 +4698,20 @@ matrixOutput1 = BSPM_new
 			</second>
 		</item>
 		<item>
+			<first>PrintStringIntoString:0</first>
+			<second>
+				<first>-4.45000000000000000e+02</first>
+				<second>-5.40000000000000000e+02</second>
+			</second>
+		</item>
+		<item>
+			<first>PrintStringIntoString:1</first>
+			<second>
+				<first>-6.46000000000000000e+02</first>
+				<second>-5.31000000000000000e+02</second>
+			</second>
+		</item>
+		<item>
 			<first>ReadField:0</first>
 			<second>
 				<first>1.54000000000000000e+02</first>
@@ -4290,15 +4721,15 @@ matrixOutput1 = BSPM_new
 		<item>
 			<first>ReadField:1</first>
 			<second>
-				<first>-2.99258375000000115e+02</first>
-				<second>-8.13562625000000025e+02</second>
+				<first>-2.95258375000000115e+02</first>
+				<second>-8.03562625000000025e+02</second>
 			</second>
 		</item>
 		<item>
 			<first>ReadField:2</first>
 			<second>
-				<first>-5.50000000000000000e+01</first>
-				<second>-7.50000000000000000e+02</second>
+				<first>-5.70000000000000000e+01</first>
+				<second>-7.97000000000000000e+02</second>
 			</second>
 		</item>
 		<item>
@@ -4313,13 +4744,6 @@ matrixOutput1 = BSPM_new
 			<second>
 				<first>9.81312500000001364e+00</first>
 				<second>3.84669999999999959e+02</second>
-			</second>
-		</item>
-		<item>
-			<first>SelectSubMatrix:0</first>
-			<second>
-				<first>-6.25000000000000000e+02</first>
-				<second>-1.35000000000000000e+02</second>
 			</second>
 		</item>
 		<item>
@@ -4358,6 +4782,13 @@ matrixOutput1 = BSPM_new
 			</second>
 		</item>
 		<item>
+			<first>SplitFileName:1</first>
+			<second>
+				<first>-2.51000000000000000e+02</first>
+				<second>-7.05000000000000000e+02</second>
+			</second>
+		</item>
+		<item>
 			<first>ViewScene:0</first>
 			<second>
 				<first>-2.99186874999999930e+02</first>
@@ -4369,20 +4800,22 @@ matrixOutput1 = BSPM_new
 		<count>11</count>
 		<item_version>0</item_version>
 		<item class_id="20" tracking_level="0" version="0">
-			<first>CreateString:0</first>
+			<first>GetMatrixSlice:0</first>
 			<second class_id="21" tracking_level="0" version="0">
 				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;.SF NS Text&apos;; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;SCRIPTDATA file&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</noteHTML>
-				<noteText>SCRIPTDATA file</noteText>
-				<position>3</position>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;choose &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;time point&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</noteHTML>
+				<noteText>choose 
+time point</noteText>
+				<position>5</position>
 				<fontSize>13</fontSize>
 			</second>
 		</item>
 		<item>
-			<first>CreateString:1</first>
+			<first>ImportFieldsFromMatlab:0</first>
 			<second>
 				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -4395,17 +4828,15 @@ p, li { white-space: pre-wrap; }
 			</second>
 		</item>
 		<item>
-			<first>GetMatrixSlice:0</first>
+			<first>ImportFieldsFromMatlab:1</first>
 			<second>
 				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;.SF NS Text&apos;; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;choose &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;time point&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</noteHTML>
-				<noteText>choose 
-time point</noteText>
-				<position>5</position>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;SCRIPTDATA  file&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</noteHTML>
+				<noteText>SCRIPTDATA  file</noteText>
+				<position>3</position>
 				<fontSize>13</fontSize>
 			</second>
 		</item>
@@ -4425,7 +4856,7 @@ Signal averaging</noteText>
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:4</first>
+			<first>InterfaceWithPython:1</first>
 			<second>
 				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -4523,7 +4954,7 @@ p, li { white-space: pre-wrap; }
 		<item_version>0</item_version>
 	</connectionNotes>
 	<moduleTags class_id="22" tracking_level="0" version="0">
-		<count>29</count>
+		<count>32</count>
 		<item_version>0</item_version>
 		<item class_id="23" tracking_level="0" version="0">
 			<first>BuildBEMatrix:0</first>
@@ -4550,14 +4981,6 @@ p, li { white-space: pre-wrap; }
 			<second>0</second>
 		</item>
 		<item>
-			<first>CreateString:0</first>
-			<second>2</second>
-		</item>
-		<item>
-			<first>CreateString:1</first>
-			<second>2</second>
-		</item>
-		<item>
 			<first>EvaluateLinearAlgebraBinary:0</first>
 			<second>4</second>
 		</item>
@@ -4578,11 +5001,23 @@ p, li { white-space: pre-wrap; }
 			<second>0</second>
 		</item>
 		<item>
+			<first>ImportFieldsFromMatlab:0</first>
+			<second>2</second>
+		</item>
+		<item>
+			<first>ImportFieldsFromMatlab:1</first>
+			<second>2</second>
+		</item>
+		<item>
+			<first>ImportMatricesFromMatlab:0</first>
+			<second>-1</second>
+		</item>
+		<item>
 			<first>InterfaceWithPython:0</first>
 			<second>3</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:4</first>
+			<first>InterfaceWithPython:1</first>
 			<second>3</second>
 		</item>
 		<item>
@@ -4592,6 +5027,14 @@ p, li { white-space: pre-wrap; }
 		<item>
 			<first>LinePlotter:2</first>
 			<second>0</second>
+		</item>
+		<item>
+			<first>PrintStringIntoString:0</first>
+			<second>2</second>
+		</item>
+		<item>
+			<first>PrintStringIntoString:1</first>
+			<second>2</second>
 		</item>
 		<item>
 			<first>ReadField:0</first>
@@ -4614,10 +5057,6 @@ p, li { white-space: pre-wrap; }
 			<second>0</second>
 		</item>
 		<item>
-			<first>SelectSubMatrix:0</first>
-			<second>-1</second>
-		</item>
-		<item>
 			<first>SetFieldData:0</first>
 			<second>0</second>
 		</item>
@@ -4636,6 +5075,10 @@ p, li { white-space: pre-wrap; }
 		<item>
 			<first>SolveInverseProblemWithTikhonov:0</first>
 			<second>9</second>
+		</item>
+		<item>
+			<first>SplitFileName:1</first>
+			<second>-1</second>
 		</item>
 		<item>
 			<first>ViewScene:0</first>
