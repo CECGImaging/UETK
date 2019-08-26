@@ -4,7 +4,7 @@
 <networkFile class_id="0" tracking_level="0" version="6">
 	<networkInfo class_id="1" tracking_level="0" version="0">
 		<modules class_id="2" tracking_level="0" version="0">
-			<count>32</count>
+			<count>31</count>
 			<item_version>0</item_version>
 			<item class_id="3" tracking_level="0" version="0">
 				<first>BuildBEMatrix:0</first>
@@ -565,7 +565,7 @@
 									<name>MaxIndex</name>
 									<value>
 										<which>0</which>
-										<value>574</value>
+										<value>403</value>
 									</value>
 								</second>
 							</item>
@@ -653,7 +653,7 @@
 									<name>MaxIndex</name>
 									<value>
 										<which>0</which>
-										<value>574</value>
+										<value>403</value>
 									</value>
 								</second>
 							</item>
@@ -880,91 +880,6 @@
 				</second>
 			</item>
 			<item>
-				<first>ImportMatricesFromMatlab:0</first>
-				<second>
-					<module>
-						<package_name_>SCIRun</package_name_>
-						<category_name_>Matlab</category_name_>
-						<module_name_>ImportMatricesFromMatlab</module_name_>
-					</module>
-					<state>
-						<stateMap>
-							<count>2</count>
-							<item_version>0</item_version>
-							<item>
-								<first>
-									<name>Filename</name>
-								</first>
-								<second>
-									<name>Filename</name>
-									<value>
-										<which>2</which>
-										<value>%SCIRUNDATADIR%/Human_Pacing_Site/Nijmegen-2004-12-09/Interventions/PROCESSINGDATA_II.mat</value>
-									</value>
-								</second>
-							</item>
-							<item>
-								<first>
-									<name>PortChoices</name>
-								</first>
-								<second>
-									<name>PortChoices</name>
-									<value>
-										<which>5</which>
-										<value>
-											<count>6</count>
-											<item_version>0</item_version>
-											<item>
-												<name></name>
-												<value>
-													<which>2</which>
-													<value>&lt;none&gt;</value>
-												</value>
-											</item>
-											<item>
-												<name></name>
-												<value>
-													<which>2</which>
-													<value>&lt;none&gt;</value>
-												</value>
-											</item>
-											<item>
-												<name></name>
-												<value>
-													<which>2</which>
-													<value>&lt;none&gt;</value>
-												</value>
-											</item>
-											<item>
-												<name></name>
-												<value>
-													<which>2</which>
-													<value>&lt;none&gt;</value>
-												</value>
-											</item>
-											<item>
-												<name></name>
-												<value>
-													<which>2</which>
-													<value>&lt;none&gt;</value>
-												</value>
-											</item>
-											<item>
-												<name></name>
-												<value>
-													<which>2</which>
-													<value>&lt;none&gt;</value>
-												</value>
-											</item>
-										</value>
-									</value>
-								</second>
-							</item>
-						</stateMap>
-					</state>
-				</second>
-			</item>
-			<item>
 				<first>InterfaceWithPython:0</first>
 				<second>
 					<module>
@@ -1077,7 +992,10 @@ import scipy.io
 eng.eval(&quot;global SCRIPTDATA PROCESSINGDATA&quot;,nargout = 0)
 
 # run PFEIFER
-eng.PFEIFER(&apos;runScriptFile&apos;,sd_input,pd_input, nargout=0)
+if &apos;sd_input&apos; in locals() and &apos;pd_input&apos; in locals():
+  eng.PFEIFER(&apos;runScriptFile&apos;,sd_input,pd_input, nargout=0)
+else:
+  eng.PFEIFER(&apos;runScriptFile&apos;, nargout=0)
 mf = eng.eval(&quot;findobj(allchild(0.0),&apos;tag&apos;,&apos;PROCESSINGSCRIPTMENU&apos;)&quot;)
 eng.workspace[&apos;mainFigure&apos;]=mf
 
@@ -2163,7 +2081,7 @@ matrixOutput1 = BSPM_new
 									<name>FixedMax</name>
 									<value>
 										<which>1</which>
-										<value>2.30470227531011755e-02</value>
+										<value>1.33010423672552586e-01</value>
 									</value>
 								</second>
 							</item>
@@ -2175,7 +2093,7 @@ matrixOutput1 = BSPM_new
 									<name>FixedMin</name>
 									<value>
 										<which>1</which>
-										<value>-4.13088702218149043e-02</value>
+										<value>-2.73381452702553644e-02</value>
 									</value>
 								</second>
 							</item>
@@ -2227,7 +2145,7 @@ matrixOutput1 = BSPM_new
 									<name>FixedMax</name>
 									<value>
 										<which>1</which>
-										<value>1.33801447465278311e+00</value>
+										<value>7.81478480584307089e+00</value>
 									</value>
 								</second>
 							</item>
@@ -2239,7 +2157,7 @@ matrixOutput1 = BSPM_new
 									<name>FixedMin</name>
 									<value>
 										<which>1</which>
-										<value>-1.62042130717137889e+00</value>
+										<value>-4.62510478187440111e+00</value>
 									</value>
 								</second>
 							</item>
@@ -4569,13 +4487,13 @@ matrixOutput1 = BSPM_new
 		</connections>
 	</networkInfo>
 	<modulePositions class_id="16" tracking_level="0" version="0">
-		<count>32</count>
+		<count>31</count>
 		<item_version>0</item_version>
 		<item class_id="17" tracking_level="0" version="0">
 			<first>BuildBEMatrix:0</first>
 			<second class_id="18" tracking_level="0" version="0">
-				<first>-1.83000000000000000e+02</first>
-				<second>-3.63000000000000000e+02</second>
+				<first>-1.98000000000000000e+02</first>
+				<second>-3.75000000000000000e+02</second>
 			</second>
 		</item>
 		<item>
@@ -4663,13 +4581,6 @@ matrixOutput1 = BSPM_new
 			</second>
 		</item>
 		<item>
-			<first>ImportMatricesFromMatlab:0</first>
-			<second>
-				<first>-2.99000000000000000e+02</first>
-				<second>-5.85000000000000000e+02</second>
-			</second>
-		</item>
-		<item>
 			<first>InterfaceWithPython:0</first>
 			<second>
 				<first>-5.80849999999999909e+02</first>
@@ -4714,8 +4625,8 @@ matrixOutput1 = BSPM_new
 		<item>
 			<first>ReadField:0</first>
 			<second>
-				<first>1.54000000000000000e+02</first>
-				<second>-8.02000000000000000e+02</second>
+				<first>1.39000000000000000e+02</first>
+				<second>-8.14000000000000000e+02</second>
 			</second>
 		</item>
 		<item>
@@ -4954,7 +4865,7 @@ p, li { white-space: pre-wrap; }
 		<item_version>0</item_version>
 	</connectionNotes>
 	<moduleTags class_id="22" tracking_level="0" version="0">
-		<count>32</count>
+		<count>31</count>
 		<item_version>0</item_version>
 		<item class_id="23" tracking_level="0" version="0">
 			<first>BuildBEMatrix:0</first>
@@ -5007,10 +4918,6 @@ p, li { white-space: pre-wrap; }
 		<item>
 			<first>ImportFieldsFromMatlab:1</first>
 			<second>2</second>
-		</item>
-		<item>
-			<first>ImportMatricesFromMatlab:0</first>
-			<second>-1</second>
 		</item>
 		<item>
 			<first>InterfaceWithPython:0</first>

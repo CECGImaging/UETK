@@ -1427,17 +1427,20 @@
 									<name>PythonCode</name>
 									<value>
 										<which>2</which>
-										<value>sd_input = stringInput1
+										<value># PFIEFER parameter filenames comment out if they aren&apos;t generated yet
+sd_input = stringInput1
 pd_input = stringInput2
-
-
 
 # intialize script and processing data
 eng.eval(&quot;global SCRIPTDATA PROCESSINGDATA&quot;,nargout = 0)
 
 # run PFEIFER
 print(&apos;Running PFEIFER&apos;)
-eng.PFEIFER(&apos;runScriptFile&apos;,sd_input,pd_input, nargout=0)
+if &apos;sd_input&apos; in locals() and &apos;pd_input&apos; in locals():
+  eng.PFEIFER(&apos;runScriptFile&apos;,sd_input,pd_input, nargout=0)
+else:
+  eng.PFEIFER(&apos;runScriptFile&apos;, nargout=0)
+
 mf = eng.eval(&quot;findobj(allchild(0.0),&apos;tag&apos;,&apos;PROCESSINGSCRIPTMENU&apos;)&quot;)
 eng.workspace[&apos;mainFigure&apos;]=mf
 
@@ -4883,7 +4886,7 @@ matrixOutput1 = mean_bspm</value>
 									<name>DefaultMeshColor</name>
 									<value>
 										<which>2</which>
-										<value>Color(0.5,0.5,0.5)</value>
+										<value>Color(0.391318,0.388388,0.393515)</value>
 									</value>
 								</second>
 							</item>
@@ -6030,28 +6033,28 @@ matrixOutput1 = mean_bspm</value>
 												<name>listElement</name>
 												<value>
 													<which>1</which>
-													<value>7.78245568275451660e-01</value>
+													<value>-9.03309822082519531e-01</value>
 												</value>
 											</item>
 											<item>
 												<name>listElement</name>
 												<value>
 													<which>1</which>
-													<value>-5.85583984851837158e-01</value>
+													<value>3.99970471858978271e-01</value>
 												</value>
 											</item>
 											<item>
 												<name>listElement</name>
 												<value>
 													<which>1</which>
-													<value>1.59739539027214050e-01</value>
+													<value>-8.95181670784950256e-03</value>
 												</value>
 											</item>
 											<item>
 												<name>listElement</name>
 												<value>
 													<which>1</which>
-													<value>1.60961091518402100e-01</value>
+													<value>1.52875140309333801e-01</value>
 												</value>
 											</item>
 										</value>
@@ -6126,7 +6129,7 @@ matrixOutput1 = mean_bspm</value>
 									<name>FogEnd</name>
 									<value>
 										<which>1</which>
-										<value>7.09999999999999964e-01</value>
+										<value>1.19999999999999996e+00</value>
 									</value>
 								</second>
 							</item>
@@ -6150,7 +6153,7 @@ matrixOutput1 = mean_bspm</value>
 									<name>FogStart</name>
 									<value>
 										<which>1</which>
-										<value>0.00000000000000000e+00</value>
+										<value>5.00000000000000028e-02</value>
 									</value>
 								</second>
 							</item>

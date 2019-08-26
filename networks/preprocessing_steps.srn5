@@ -755,7 +755,10 @@
 pd_input = stringInput2
 
 # intialize script and processing data
-eng.eval(&quot;global SCRIPTDATA PROCESSINGDATA&quot;,nargout = 0)
+if &apos;sd_input&apos; in locals() and &apos;pd_input&apos; in locals():
+  eng.PFEIFER(&apos;runScriptFile&apos;,sd_input,pd_input, nargout=0)
+else:
+  eng.PFEIFER(&apos;runScriptFile&apos;, nargout=0)
 
 # run PFEIFER
 eng.PFEIFER(&apos;runScriptFile&apos;,sd_input,pd_input, nargout=0)

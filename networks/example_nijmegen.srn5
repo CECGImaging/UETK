@@ -1611,9 +1611,12 @@
 									<name>PythonCode</name>
 									<value>
 										<which>2</which>
-										<value>sd_input = stringInput5
+										<value># Settings and parameter filenames
+sd_input = stringInput5
 pd_input = stringInput6
 
+#print(sd_input)
+#print(pd_input)
 
 
 # intialize script and processing data
@@ -6228,7 +6231,7 @@ matrixOutput1 = BSPM_new
 									<name>FacesColoring</name>
 									<value>
 										<which>0</which>
-										<value>1</value>
+										<value>0</value>
 									</value>
 								</second>
 							</item>
