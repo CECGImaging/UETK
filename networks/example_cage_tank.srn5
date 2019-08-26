@@ -1297,7 +1297,7 @@
 					</module>
 					<state>
 						<stateMap>
-							<count>20</count>
+							<count>21</count>
 							<item_version>0</item_version>
 							<item>
 								<first>
@@ -1385,6 +1385,18 @@
 							</item>
 							<item>
 								<first>
+									<name>InputString:6</name>
+								</first>
+								<second>
+									<name>InputString:6</name>
+									<value>
+										<which>2</which>
+										<value>stringInput7</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
 									<name>NumberOfRetries</name>
 								</first>
 								<second>
@@ -1415,17 +1427,20 @@
 									<name>PythonCode</name>
 									<value>
 										<which>2</which>
-										<value>sd_input = stringInput1
+										<value># PFIEFER parameter filenames comment out if they aren&apos;t generated yet
+sd_input = stringInput1
 pd_input = stringInput2
-
-
 
 # intialize script and processing data
 eng.eval(&quot;global SCRIPTDATA PROCESSINGDATA&quot;,nargout = 0)
 
 # run PFEIFER
 print(&apos;Running PFEIFER&apos;)
-eng.PFEIFER(&apos;runScriptFile&apos;,sd_input,pd_input, nargout=0)
+if &apos;sd_input&apos; in locals() and &apos;pd_input&apos; in locals():
+  eng.PFEIFER(&apos;runScriptFile&apos;,sd_input,pd_input, nargout=0)
+else:
+  eng.PFEIFER(&apos;runScriptFile&apos;, nargout=0)
+
 mf = eng.eval(&quot;findobj(allchild(0.0),&apos;tag&apos;,&apos;PROCESSINGSCRIPTMENU&apos;)&quot;)
 eng.workspace[&apos;mainFigure&apos;]=mf
 
@@ -1583,11 +1598,10 @@ eng =  matlab.engine.start_matlab() if (not &apos;eng&apos; in vars()) else eng
 
 print(eng)
 
-&quot;&quot;&quot;
-from scipy.signal import butter, filtfilt
-import scipy.io
-from pythonscript_new import *
-&quot;&quot;&quot;
+
+#from scipy.signal import butter, filtfilt
+#import scipy.io
+
 
 #print(&apos;loaded scipy.io&apos;)
 import numpy as np
@@ -1601,7 +1615,7 @@ import numpy as np
 				</second>
 			</item>
 			<item>
-				<first>InterfaceWithPython:4</first>
+				<first>InterfaceWithPython:1</first>
 				<second>
 					<module>
 						<package_name_>SCIRun</package_name_>
@@ -1719,6 +1733,8 @@ import numpy as np
 										<value># this does a simple lowpass filter
 
 print(&apos;Low Pass filtering&apos;)
+
+from scipy.signal import butter, filtfilt
 
 fs = matrixInput2
 
@@ -1871,7 +1887,7 @@ matrixOutput1 = BSPM_new
 				</second>
 			</item>
 			<item>
-				<first>InterfaceWithPython:5</first>
+				<first>InterfaceWithPython:2</first>
 				<second>
 					<module>
 						<package_name_>SCIRun</package_name_>
@@ -1880,7 +1896,7 @@ matrixOutput1 = BSPM_new
 					</module>
 					<state>
 						<stateMap>
-							<count>16</count>
+							<count>17</count>
 							<item_version>0</item_version>
 							<item>
 								<first>
@@ -1915,6 +1931,18 @@ matrixOutput1 = BSPM_new
 									<value>
 										<which>2</which>
 										<value>stringInput1</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>InputString:1</name>
+								</first>
+								<second>
+									<name>InputString:1</name>
+									<value>
+										<which>2</which>
+										<value>stringInput2</value>
 									</value>
 								</second>
 							</item>
@@ -1956,12 +1984,17 @@ print(&apos;Bad Lead Removal&apos;)
 scriptdata_fname = stringInput1
 #print(scriptdata_fname)
 
+import scipy.io
+
+
 pots = matrixInput1
 numleads = len(pots)
 
 tmp = scipy.io.loadmat(scriptdata_fname)
 
 SCRIPTDATA = tmp[&apos;SCRIPTDATA&apos;]
+
+
 
 
 # get bad leads from script file
@@ -2118,7 +2151,7 @@ matrixOutput2 = [keep_map]</value>
 				</second>
 			</item>
 			<item>
-				<first>InterfaceWithPython:6</first>
+				<first>InterfaceWithPython:3</first>
 				<second>
 					<module>
 						<package_name_>SCIRun</package_name_>
@@ -2127,7 +2160,7 @@ matrixOutput2 = [keep_map]</value>
 					</module>
 					<state>
 						<stateMap>
-							<count>14</count>
+							<count>15</count>
 							<item_version>0</item_version>
 							<item>
 								<first>
@@ -2138,6 +2171,18 @@ matrixOutput2 = [keep_map]</value>
 									<value>
 										<which>2</which>
 										<value>stringInput1</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>InputString:1</name>
+								</first>
+								<second>
+									<name>InputString:1</name>
+									<value>
+										<which>2</which>
+										<value>stringInput2</value>
 									</value>
 								</second>
 							</item>
@@ -2176,7 +2221,11 @@ matrixOutput2 = [keep_map]</value>
 										<value># signal averaging
 # assumes PFIEFER output but could be done with a list of files to load
 
+
 print(&apos;Signal Averaging&apos;)
+
+import scipy.io
+
 scriptdata_fname = stringInput1
 #print(scriptdata_fname)
 
@@ -3501,7 +3550,7 @@ matrixOutput1 = mean_bspm</value>
 									<name>ColorMapName</name>
 									<value>
 										<which>2</which>
-										<value>torso</value>
+										<value>torso cmap</value>
 									</value>
 								</second>
 							</item>
@@ -3685,7 +3734,7 @@ matrixOutput1 = mean_bspm</value>
 									<name>ColorMapName</name>
 									<value>
 										<which>2</which>
-										<value>heart</value>
+										<value>heart cmap</value>
 									</value>
 								</second>
 							</item>
@@ -4837,7 +4886,7 @@ matrixOutput1 = mean_bspm</value>
 									<name>DefaultMeshColor</name>
 									<value>
 										<which>2</which>
-										<value>Color(0.5,0.5,0.5)</value>
+										<value>Color(0.391318,0.388388,0.393515)</value>
 									</value>
 								</second>
 							</item>
@@ -5883,7 +5932,7 @@ matrixOutput1 = mean_bspm</value>
 					</module>
 					<state>
 						<stateMap>
-							<count>39</count>
+							<count>50</count>
 							<item_version>0</item_version>
 							<item>
 								<first>
@@ -5918,6 +5967,97 @@ matrixOutput1 = mean_bspm</value>
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>CameraDistance</name>
+								</first>
+								<second>
+									<name>CameraDistance</name>
+									<value>
+										<which>1</which>
+										<value>1.01665924072265625e+03</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>CameraLookAt</name>
+								</first>
+								<second>
+									<name>CameraLookAt</name>
+									<value>
+										<which>5</which>
+										<value>
+											<count>3</count>
+											<item_version>0</item_version>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>-1.51999969482421875e+01</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>3.85500030517578125e+01</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>2.00449996948242188e+02</value>
+												</value>
+											</item>
+										</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>CameraRotation</name>
+								</first>
+								<second>
+									<name>CameraRotation</name>
+									<value>
+										<which>5</which>
+										<value>
+											<count>4</count>
+											<item_version>0</item_version>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>-9.03309822082519531e-01</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>3.99970471858978271e-01</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>-8.95181670784950256e-03</value>
+												</value>
+											</item>
+											<item>
+												<name>listElement</name>
+												<value>
+													<which>1</which>
+													<value>1.52875140309333801e-01</value>
+												</value>
+											</item>
+										</value>
 									</value>
 								</second>
 							</item>
@@ -5989,7 +6129,7 @@ matrixOutput1 = mean_bspm</value>
 									<name>FogEnd</name>
 									<value>
 										<which>1</which>
-										<value>7.09999999999999964e-01</value>
+										<value>1.19999999999999996e+00</value>
 									</value>
 								</second>
 							</item>
@@ -6013,7 +6153,19 @@ matrixOutput1 = mean_bspm</value>
 									<name>FogStart</name>
 									<value>
 										<which>1</which>
-										<value>0.00000000000000000e+00</value>
+										<value>5.00000000000000028e-02</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>HeadLightAzimuth</name>
+								</first>
+								<second>
+									<name>HeadLightAzimuth</name>
+									<value>
+										<which>0</which>
+										<value>180</value>
 									</value>
 								</second>
 							</item>
@@ -6026,6 +6178,18 @@ matrixOutput1 = mean_bspm</value>
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>HeadLightInclination</name>
+								</first>
+								<second>
+									<name>HeadLightInclination</name>
+									<value>
+										<which>0</which>
+										<value>90</value>
 									</value>
 								</second>
 							</item>
@@ -6043,6 +6207,18 @@ matrixOutput1 = mean_bspm</value>
 							</item>
 							<item>
 								<first>
+									<name>Light1Azimuth</name>
+								</first>
+								<second>
+									<name>Light1Azimuth</name>
+									<value>
+										<which>0</which>
+										<value>180</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
 									<name>Light1Color</name>
 								</first>
 								<second>
@@ -6050,6 +6226,18 @@ matrixOutput1 = mean_bspm</value>
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>Light1Inclination</name>
+								</first>
+								<second>
+									<name>Light1Inclination</name>
+									<value>
+										<which>0</which>
+										<value>90</value>
 									</value>
 								</second>
 							</item>
@@ -6067,6 +6255,18 @@ matrixOutput1 = mean_bspm</value>
 							</item>
 							<item>
 								<first>
+									<name>Light2Azimuth</name>
+								</first>
+								<second>
+									<name>Light2Azimuth</name>
+									<value>
+										<which>0</which>
+										<value>180</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
 									<name>Light2Color</name>
 								</first>
 								<second>
@@ -6074,6 +6274,18 @@ matrixOutput1 = mean_bspm</value>
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>Light2Inclination</name>
+								</first>
+								<second>
+									<name>Light2Inclination</name>
+									<value>
+										<which>0</which>
+										<value>90</value>
 									</value>
 								</second>
 							</item>
@@ -6091,6 +6303,18 @@ matrixOutput1 = mean_bspm</value>
 							</item>
 							<item>
 								<first>
+									<name>Light3Azimuth</name>
+								</first>
+								<second>
+									<name>Light3Azimuth</name>
+									<value>
+										<which>0</which>
+										<value>180</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
 									<name>Light3Color</name>
 								</first>
 								<second>
@@ -6098,6 +6322,18 @@ matrixOutput1 = mean_bspm</value>
 									<value>
 										<which>2</which>
 										<value>Color(0,0,0)</value>
+									</value>
+								</second>
+							</item>
+							<item>
+								<first>
+									<name>Light3Inclination</name>
+								</first>
+								<second>
+									<name>Light3Inclination</name>
+									<value>
+										<which>0</which>
+										<value>90</value>
 									</value>
 								</second>
 							</item>
@@ -6703,7 +6939,7 @@ matrixOutput1 = mean_bspm</value>
 					<name>PythonMatrix1</name>
 					<id>0</id>
 				</port1_>
-				<moduleId2_>InterfaceWithPython:4</moduleId2_>
+				<moduleId2_>InterfaceWithPython:1</moduleId2_>
 				<port2_>
 					<name>InputMatrix</name>
 					<id>4</id>
@@ -6727,7 +6963,7 @@ matrixOutput1 = mean_bspm</value>
 					<name>PythonString2</name>
 					<id>0</id>
 				</port1_>
-				<moduleId2_>InterfaceWithPython:5</moduleId2_>
+				<moduleId2_>InterfaceWithPython:2</moduleId2_>
 				<port2_>
 					<name>InputString</name>
 					<id>0</id>
@@ -6739,14 +6975,14 @@ matrixOutput1 = mean_bspm</value>
 					<name>PythonString2</name>
 					<id>0</id>
 				</port1_>
-				<moduleId2_>InterfaceWithPython:6</moduleId2_>
+				<moduleId2_>InterfaceWithPython:3</moduleId2_>
 				<port2_>
 					<name>InputString</name>
 					<id>0</id>
 				</port2_>
 			</item>
 			<item>
-				<moduleId1_>InterfaceWithPython:4</moduleId1_>
+				<moduleId1_>InterfaceWithPython:1</moduleId1_>
 				<port1_>
 					<name>PythonMatrix1</name>
 					<id>0</id>
@@ -6758,7 +6994,7 @@ matrixOutput1 = mean_bspm</value>
 				</port2_>
 			</item>
 			<item>
-				<moduleId1_>InterfaceWithPython:4</moduleId1_>
+				<moduleId1_>InterfaceWithPython:1</moduleId1_>
 				<port1_>
 					<name>PythonMatrix1</name>
 					<id>0</id>
@@ -6770,19 +7006,19 @@ matrixOutput1 = mean_bspm</value>
 				</port2_>
 			</item>
 			<item>
-				<moduleId1_>InterfaceWithPython:4</moduleId1_>
+				<moduleId1_>InterfaceWithPython:1</moduleId1_>
 				<port1_>
 					<name>PythonMatrix1</name>
 					<id>0</id>
 				</port1_>
-				<moduleId2_>InterfaceWithPython:5</moduleId2_>
+				<moduleId2_>InterfaceWithPython:2</moduleId2_>
 				<port2_>
 					<name>InputMatrix</name>
-					<id>0</id>
+					<id>1</id>
 				</port2_>
 			</item>
 			<item>
-				<moduleId1_>InterfaceWithPython:5</moduleId1_>
+				<moduleId1_>InterfaceWithPython:2</moduleId1_>
 				<port1_>
 					<name>PythonMatrix2</name>
 					<id>0</id>
@@ -6794,7 +7030,7 @@ matrixOutput1 = mean_bspm</value>
 				</port2_>
 			</item>
 			<item>
-				<moduleId1_>InterfaceWithPython:6</moduleId1_>
+				<moduleId1_>InterfaceWithPython:3</moduleId1_>
 				<port1_>
 					<name>PythonMatrix1</name>
 					<id>0</id>
@@ -6806,12 +7042,12 @@ matrixOutput1 = mean_bspm</value>
 				</port2_>
 			</item>
 			<item>
-				<moduleId1_>InterfaceWithPython:6</moduleId1_>
+				<moduleId1_>InterfaceWithPython:3</moduleId1_>
 				<port1_>
 					<name>PythonMatrix1</name>
 					<id>0</id>
 				</port1_>
-				<moduleId2_>InterfaceWithPython:4</moduleId2_>
+				<moduleId2_>InterfaceWithPython:1</moduleId2_>
 				<port2_>
 					<name>InputMatrix</name>
 					<id>2</id>
@@ -7299,8 +7535,8 @@ matrixOutput1 = mean_bspm</value>
 		<item>
 			<first>GetMatrixSlice:1</first>
 			<second>
-				<first>-8.91868749999999864e+01</first>
-				<second>1.88669999999999959e+02</second>
+				<first>-1.16186874999999986e+02</first>
+				<second>1.28669999999999959e+02</second>
 			</second>
 		</item>
 		<item>
@@ -7332,23 +7568,23 @@ matrixOutput1 = mean_bspm</value>
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:4</first>
+			<first>InterfaceWithPython:1</first>
 			<second>
 				<first>-7.14068143125000120e+02</first>
 				<second>-8.43022714374999964e+02</second>
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:5</first>
+			<first>InterfaceWithPython:2</first>
 			<second>
 				<first>-6.69000000000000000e+02</first>
 				<second>-7.09000000000000000e+02</second>
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:6</first>
+			<first>InterfaceWithPython:3</first>
 			<second>
-				<first>-8.76000000000000000e+02</first>
+				<first>-8.75000000000000000e+02</first>
 				<second>-9.16000000000000000e+02</second>
 			</second>
 		</item>
@@ -7599,7 +7835,7 @@ Signal averaging</noteText>
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:4</first>
+			<first>InterfaceWithPython:1</first>
 			<second>
 				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -7614,7 +7850,7 @@ processing</noteText>
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:5</first>
+			<first>InterfaceWithPython:2</first>
 			<second>
 				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -7627,7 +7863,7 @@ p, li { white-space: pre-wrap; }
 			</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:6</first>
+			<first>InterfaceWithPython:3</first>
 			<second>
 				<noteHTML>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -7848,15 +8084,15 @@ p, li { white-space: pre-wrap; }
 			<second>3</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:4</first>
+			<first>InterfaceWithPython:1</first>
 			<second>3</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:5</first>
+			<first>InterfaceWithPython:2</first>
 			<second>6</second>
 		</item>
 		<item>
-			<first>InterfaceWithPython:6</first>
+			<first>InterfaceWithPython:3</first>
 			<second>3</second>
 		</item>
 		<item>
