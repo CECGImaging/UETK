@@ -8,7 +8,7 @@ The UETK is a series of networks and pipelines that runs within [SCIRun](https:/
 
 To run the Unified ECGI Toolkit (UETK) users will need to download and install [SCIRun](https://github.com/SCIInstitute/SCIRun/releases), and to download [PFEIFER (v 1.2.1 or later)](https://github.com/SCIInstitute/PFEIFER/releases) and add the PFEIFER source folder and its subfolders to the MATLAB path variable.  A valid MATLAB license and installation is required to run PFEIFER. Users should also download the [Foward/Inverse Toolkit](https://github.com/SCIInstitute/FwdInvToolkit/releases) for a broader range of techniques for ECGI.  Users should also clone or download this UETK repo.
 
-Running the UTEK will require running some python packages in SCIRun. These packages include:
+Running the UTEK will require running some Python packages in SCIRun. These packages include:
 
  - matlab engine
  - numpy
@@ -34,12 +34,12 @@ The UETK is designed to be a modular workflow that can allow researchers take th
 
 ### PFEIFER processing
 
-The main component of the UETK that differs from the Forward/Inverse Toolkit is the integration with PFIEFER.  PFEIFER is a Matlab package that is used to process raw cardiac signals and can be run in SCIRun throught the InterfaceWithPython module using the matlab engine in python.  After installing the relevant packages as described [above](#prerequisites), add an InterfaceWithPython module.  In the `Top-level Script` tab, use this code to launch Matlab:
+The main component of the UETK that differs from the Forward/Inverse Toolkit is the integration with PFIEFER.  PFEIFER is a MATLAB package that is used to process raw cardiac signals and can be run in SCIRun throught the InterfaceWithPython module using the matlab engine in Python.  After installing the relevant packages as described [above](#prerequisites), add an InterfaceWithPython module.  In the `Top-level Script` tab, use this code to launch MATLAB:
 ```
 import matlab.engine
 eng =  matlab.engine.start_matlab() if (not 'eng' in vars()) else eng
 ```
-Launching the Matlab engine in the `Top-level Script` tab will enable the engine to remain open until SCIRun is closed, and will save time if the network is run multiple times.  In the main `Code` tab, launch PFEIFER with:
+Launching the MATLAB engine in the `Top-level Script` tab will enable the engine to remain open until SCIRun is closed, and will save time if the network is run multiple times.  In the main `Code` tab, launch PFEIFER with:
 ```
 eng.PFEIFER('runScriptFile', nargout=0)
 mf = eng.eval("findobj(allchild(0.0),'tag','PROCESSINGSCRIPTMENU')")
@@ -66,7 +66,7 @@ _*Note: it may be necessary to convert signals into a format pfeifer can process
 
 ### Signal processing
 
-In addition to PFEIFER, the UETK can perform additional signal processing.  While there are some limited features that can be done through native SCIRun modules, a more extensive set of processing can be performed with the InterfaceWithPython module.  For example, to perform a lowpass bbutterworth filter, use the following python code in the module:
+In addition to PFEIFER, the UETK can perform additional signal processing.  While there are some limited features that can be done through native SCIRun modules, a more extensive set of processing can be performed with the InterfaceWithPython module.  For example, to perform a lowpass bbutterworth filter, use the following Python code in the module:
 ```
 from scipy.signal import butter, filtfilt
 fs = 1000
@@ -88,7 +88,7 @@ for k in range(len(BSPM)):
 matrixOutput1 = BSPM_new
 ```
 
-Matlab processing tools can also be used in the InterfaceWithPython using the [Matlab code block](http://sciinstitute.github.io/scirun.pages/python.html), or through the [Matlab python interface](http://www.mathworks.com/help/matlab/matlab_external/install-the-matlab-engine-for-python.html)
+MATLAB processing tools can also be used in the InterfaceWithPython using the [MATLAB code block](http://sciinstitute.github.io/scirun.pages/python.html), or through the [MATLAB python interface](http://www.mathworks.com/help/matlab/matlab_external/install-the-matlab-engine-for-python.html)
 
 ### Geometry processing
 
@@ -100,7 +100,7 @@ The UETK allows for users to use different formulations of the forward model tha
 
 ### ECG Imaging
 
-The UETK can use any of the ECGI methods implemented in the [Forward/Inverse Toolkit](https://github.com/SCIInstitute/FwdInvToolkit).  Presently, the main method used in the examples is Tikhonov regularization, yet users can substitute or run in parallel any other method.  Some of the implementations will require the use of Python or Matlab.
+The UETK can use any of the ECGI methods implemented in the [Forward/Inverse Toolkit](https://github.com/SCIInstitute/FwdInvToolkit).  Presently, the main method used in the examples is Tikhonov regularization, yet users can substitute or run in parallel any other method.  Some of the implementations will require the use of Python or MATLAB.
 
 ### Validation
 
